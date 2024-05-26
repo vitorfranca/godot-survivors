@@ -1,20 +1,17 @@
-[gd_scene load_steps=12 format=3 uid="uid://bdtrk0csxx5l5"]
+[gd_scene load_steps=11 format=3 uid="uid://bdtrk0csxx5l5"]
 
 [ext_resource type="PackedScene" uid="uid://bf3687c7cxd4p" path="res://scenes/game_object/player/player.tscn" id="1_8pe1k"]
 [ext_resource type="TileSet" uid="uid://bvarhutcwdciw" path="res://resources/tileset.tres" id="1_hoauw"]
 [ext_resource type="PackedScene" uid="uid://b68natiq3gs6m" path="res://scenes/manager/enemy_manager.tscn" id="1_ld0bw"]
-[ext_resource type="Script" path="res://scenes/main/main.gd" id="1_ph05t"]
 [ext_resource type="PackedScene" uid="uid://y551nywhj7lc" path="res://scenes/UI/arena_time_ui.tscn" id="1_qgf7h"]
 [ext_resource type="PackedScene" uid="uid://cgrax8oidqlj8" path="res://scenes/manager/arena_time_manager.tscn" id="2_kgi2d"]
 [ext_resource type="PackedScene" uid="uid://dkxbohcfwgsa0" path="res://scenes/UI/experience_bar.tscn" id="2_ks0kc"]
-[ext_resource type="PackedScene" uid="uid://d3q5mx68v2c8p" path="res://scenes/UI/end_screen.tscn" id="2_o5by0"]
 [ext_resource type="PackedScene" uid="uid://ci0eeoipdy13b" path="res://scenes/game_object/game_camera/game_camera.tscn" id="3_83p3f"]
 [ext_resource type="PackedScene" uid="uid://dntbok08my61y" path="res://scenes/manager/experience_manager.tscn" id="4_v1vxt"]
 [ext_resource type="PackedScene" uid="uid://bubioiu0rf2fu" path="res://scenes/manager/upgrade_manager.tscn" id="6_3mqu6"]
+[ext_resource type="PackedScene" uid="uid://cjqlo33s45s0l" path="res://scenes/manager/end_screen_manager.tscn" id="9_6m6jl"]
 
 [node name="Main" type="Node"]
-script = ExtResource("1_ph05t")
-end_screen_scene = ExtResource("2_o5by0")
 
 [node name="ArenaTimeUI" parent="." node_paths=PackedStringArray("arena_time_manager") instance=ExtResource("1_qgf7h")]
 arena_time_manager = NodePath("../ArenaTimeManager")
@@ -31,6 +28,8 @@ spawn_time = 0.25
 
 [node name="UpgradeManager" parent="." node_paths=PackedStringArray("experience_manager") instance=ExtResource("6_3mqu6")]
 experience_manager = NodePath("../ExperienceManager")
+
+[node name="EndScreenManager" parent="." instance=ExtResource("9_6m6jl")]
 
 [node name="GameCamera" parent="." instance=ExtResource("3_83p3f")]
 
