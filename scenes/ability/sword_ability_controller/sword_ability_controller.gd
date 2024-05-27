@@ -1,13 +1,15 @@
 extends Node
 
 @onready var sword_rate_upgrade = preload("res://resources/upgrades/sword_rate.tres")
+@onready var l_hand = %LHand
+@onready var r_hand = %RHand
 
 @export var sword_ability: PackedScene
 @export var max_range: float = 150
 @export var damage = 5
 @export var base_wait_time: float = 1.5
 
-var instances = []
+var instances: Array[SwordAbility] = []
 var player: Node2D
 
 func _ready():
@@ -21,7 +23,7 @@ func _process(_delta):
 		if !is_instance_valid(instance):
 			instances.erase(instance)
 			continue
-		instance.global_position = player.get_node("RHand").global_position
+		instance.global_position = r_hand.global_position
 
 
 func on_timer_timeout():
@@ -51,7 +53,7 @@ func _spawn_at_enemies():
 		return a_distance < b_distance
 	)
 	
-	var sword_instance = sword_ability.instantiate() as Node2D
+	var sword_instance = sword_ability.instantiate() as SwordAbility
 	player.get_parent().add_child(sword_instance)
 	sword_instance.hitbox_component.damage = damage
 
@@ -69,12 +71,12 @@ func _spawn_at_player():
 	if player == null:
 		return
 	
-	var sword_instance = sword_ability.instantiate() as Node2D
+	var sword_instance = sword_ability.instantiate() as SwordAbility
 	var foreground_layer = get_tree().get_first_node_in_group("foreground_layer")
 	foreground_layer.add_child(sword_instance)
 	sword_instance.hitbox_component.damage = damage
 
-	sword_instance.global_position = player.get_node("RHand").global_position
+	sword_instance.global_position = r_hand.global_position
 	instances.append(sword_instance)
 
 
