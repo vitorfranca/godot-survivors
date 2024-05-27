@@ -32,9 +32,9 @@ script = ExtResource("1_y6i7a")
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_bk63r")]
 
-[node name="AbilityManager" type="Node" parent="."]
+[node name="Abilities" type="Node" parent="."]
 
-[node name="SwordAbilityController" parent="AbilityManager" instance=ExtResource("2_xfwsu")]
+[node name="SwordAbilityController" parent="Abilities" instance=ExtResource("2_xfwsu")]
 
 [node name="HealthBar" type="ProgressBar" parent="."]
 custom_minimum_size = Vector2(32, 6)

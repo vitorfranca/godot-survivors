@@ -12,8 +12,9 @@ const SPAWN_RADIUS = 350
 @onready var timer = $Timer
 
 func _ready():
-	push_error("ArenaTimeManager is null in EnemyManager Node.")
 	assert(arena_time_manager != null)
+	if arena_time_manager == null:
+		push_error("ArenaTimeManager is null in EnemyManager Node.")
 	timer.timeout.connect(on_timer_timeout)
 	timer.wait_time = base_spawn_time
 	arena_time_manager.arena_difficulty_increased.connect(on_arena_difficulty_increased)

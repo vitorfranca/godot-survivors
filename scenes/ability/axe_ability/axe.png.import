@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bf5o8brr48ty1"
-path="res://.godot/imported/basic_enemy.png-ae6d2d95d69f96d6decd6443b9362f0c.ctex"
+uid="uid://b0be4blaq64ik"
+path="res://.godot/imported/axe.png-d9061886615e248b8d314bf004885af3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/game_object/basic_enemy/basic_enemy.png"
-dest_files=["res://.godot/imported/basic_enemy.png-ae6d2d95d69f96d6decd6443b9362f0c.ctex"]
+source_file="res://scenes/ability/axe_ability/axe.png"
+dest_files=["res://.godot/imported/axe.png-d9061886615e248b8d314bf004885af3.ctex"]
 
 [params]
 

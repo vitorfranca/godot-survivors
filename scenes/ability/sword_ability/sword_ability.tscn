@@ -122,6 +122,7 @@ offset = Vector2(0, -4)
 flip_h = true
 
 [node name="HitboxComponent" parent="Sprite2D" instance=ExtResource("2_xykyp")]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/HitboxComponent"]
 position = Vector2(0, -8)
