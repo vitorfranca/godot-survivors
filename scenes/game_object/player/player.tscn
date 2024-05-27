@@ -50,6 +50,7 @@ value = 0.5
 show_percentage = false
 
 [node name="PickupArea2D" type="Area2D" parent="."]
+visible = false
 collision_layer = 16
 collision_mask = 0
 
@@ -67,6 +68,7 @@ wait_time = 0.5
 one_shot = true
 
 [node name="CollisionArea2D" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 8
 
@@ -76,16 +78,19 @@ shape = SubResource("CircleShape2D_nhegu")
 debug_color = Color(0.998824, 0.0271898, 0, 0.42)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -6)
 shape = SubResource("CircleShape2D_2eldx")
 
 [node name="RHand" type="Marker2D" parent="."]
+visible = false
 light_mask = 2
 visibility_layer = 2
 position = Vector2(6, -3)
 gizmo_extents = 5.0
 
 [node name="LHand" type="Marker2D" parent="."]
+visible = false
 light_mask = 2
 visibility_layer = 2
 position = Vector2(-6, -3)

@@ -10,6 +10,7 @@ radius = 8.0
 script = ExtResource("1_c8gi1")
 
 [node name="Area2D" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 16
 
