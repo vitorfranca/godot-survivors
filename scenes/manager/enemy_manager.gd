@@ -1,7 +1,7 @@
 extends Node
 class_name EnemyManager
 
-const SPAWN_RADIUS = 350
+const SPAWN_RADIUS = 300
 
 @export var base_spawn_time: float = 1
 @export var spawn_time_decrease_step: float = 0.1

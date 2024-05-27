@@ -6,6 +6,33 @@
 [ext_resource type="PackedScene" uid="uid://b0o52qx2odbi5" path="res://scenes/component/hurtbox_component.tscn" id="4_3gb4p"]
 [ext_resource type="Texture2D" uid="uid://p2cd06ln6as5" path="res://scenes/game_object/enemy/rat/rat.png" id="5_ocrri"]
 
+[sub_resource type="Animation" id="Animation_18282"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
 [sub_resource type="Animation" id="Animation_t6dsg"]
 resource_name = "walk"
 length = 0.4
@@ -45,33 +72,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_18282"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -4)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m2ey6"]

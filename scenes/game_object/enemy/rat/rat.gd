@@ -1,12 +1,18 @@
 extends CharacterBody2D
 
-@export var speed = 35
 @onready var health_component: HealthComponent = $HealthComponent
+@onready var visuals = $Visuals
+
+@export var speed = 35
 
 func _process(_delta):
 	var direction = get_direction_to_player()
 	velocity = direction * speed
 	move_and_slide()
+
+	var move_sign = sign(velocity.x)
+	if move_sign != 0:
+		visuals.scale = Vector2(-move_sign, 1)
 
 
 func get_direction_to_player():

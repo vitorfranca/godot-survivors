@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://o0bw3qo1cxb3"]
+[gd_scene load_steps=11 format=3 uid="uid://o0bw3qo1cxb3"]
 
 [ext_resource type="Texture2D" uid="uid://bf5o8brr48ty1" path="res://scenes/game_object/basic_enemy/basic_enemy.png" id="1_auy2m"]
+[ext_resource type="Script" path="res://scenes/component/death_component.gd" id="1_ilrv4"]
 
 [sub_resource type="Animation" id="Animation_nlrrd"]
 resource_name = "default"
@@ -69,29 +70,29 @@ curve = SubResource("Curve_rjclt")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ao40x"]
 particle_flag_disable_z = true
 direction = Vector3(0, -1, 0)
-spread = 20.0
-initial_velocity_min = 125.0
-initial_velocity_max = 200.0
-angular_velocity_min = -720.0
-angular_velocity_max = 720.0
-gravity = Vector3(0, 400, 0)
+spread = 30.0
+initial_velocity_min = 150.0
+initial_velocity_max = 300.0
+angular_velocity_min = -1080.0
+angular_velocity_max = 1080.0
+gravity = Vector3(0, 1000, 0)
 scale_curve = SubResource("CurveTexture_nsqnb")
 alpha_curve = SubResource("CurveTexture_cag7j")
 
 [node name="DeathComponent" type="Node2D"]
+script = ExtResource("1_ilrv4")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_vvhiv")
 }
-autoplay = "default"
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 emitting = false
 amount = 1
 process_material = SubResource("ParticleProcessMaterial_ao40x")
 texture = ExtResource("1_auy2m")
-lifetime = 0.75
+lifetime = 0.5
 one_shot = true
 fixed_fps = 0
 interpolate = false
