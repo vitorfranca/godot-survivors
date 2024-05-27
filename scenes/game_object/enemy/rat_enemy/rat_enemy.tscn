@@ -120,6 +120,7 @@ health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
 shape = SubResource("CircleShape2D_dvtli")
+debug_color = Color(1, 1, 1, 0.419608)
 
 [node name="Visuals" type="Node2D" parent="."]
 

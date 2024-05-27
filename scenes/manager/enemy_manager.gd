@@ -68,9 +68,9 @@ func on_arena_difficulty_increased(arena_difficulty: int):
 	var time_off = (spawn_time_decrease_step / number_of_increases) * arena_difficulty
 	timer.wait_time = max(timer.wait_time - time_off, min_spawn_time)
 	
-	if arena_difficulty == 1:
+	if arena_difficulty == 12: # 1 minute
 		enemy_table.add_item(rat_enemy_scene, 20)
-	if arena_difficulty == 2:
+	if arena_difficulty == 1: # 2 minutes
 		enemy_table.add_item(wizard_enemy_scene, 50)
 		
 	
