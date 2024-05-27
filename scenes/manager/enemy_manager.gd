@@ -70,7 +70,7 @@ func on_arena_difficulty_increased(arena_difficulty: int):
 	
 	if arena_difficulty == 12: # 1 minute
 		enemy_table.add_item(rat_enemy_scene, 20)
-	if arena_difficulty == 1: # 2 minutes
+	if arena_difficulty == 24: # 2 minutes
 		enemy_table.add_item(wizard_enemy_scene, 50)
 		
 	
