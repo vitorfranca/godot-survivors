@@ -9,7 +9,7 @@ extends Node
 @export var damage = 5
 @export var base_wait_time: float = 1.5
 
-var instances: Array[SwordAbility] = []
+var instances = []
 var player: Node2D
 
 func _ready():
