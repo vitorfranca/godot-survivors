@@ -1,0 +1,125 @@
+[gd_scene load_steps=11 format=3 uid="uid://dpcjxhw2sf12l"]
+
+[ext_resource type="Script" path="res://scenes/game_object/basic_enemy/basic_enemy.gd" id="1_qvifb"]
+[ext_resource type="PackedScene" uid="uid://8yyybjo61tko" path="res://scenes/component/health_component.tscn" id="2_rpu6j"]
+[ext_resource type="PackedScene" uid="uid://dt1p5hucw0viu" path="res://scenes/component/vial_drop_component.tscn" id="3_aeidf"]
+[ext_resource type="PackedScene" uid="uid://b0o52qx2odbi5" path="res://scenes/component/hurtbox_component.tscn" id="4_3gb4p"]
+[ext_resource type="Texture2D" uid="uid://p2cd06ln6as5" path="res://scenes/game_object/enemy/rat/rat.png" id="5_ocrri"]
+
+[sub_resource type="Animation" id="Animation_t6dsg"]
+resource_name = "walk"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -4), Vector2(-1, -4), Vector2(1, -4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.174533, -0.174533, 0.174533, -0.174533]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_18282"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m2ey6"]
+_data = {
+"RESET": SubResource("Animation_18282"),
+"walk": SubResource("Animation_t6dsg")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dvtli"]
+radius = 9.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ij5o3"]
+radius = 7.0
+
+[node name="BasicEnemy" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 8
+collision_mask = 9
+motion_mode = 1
+script = ExtResource("1_qvifb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Visuals/Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_m2ey6")
+}
+autoplay = "walk"
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_rpu6j")]
+max_health = 6.0
+
+[node name="VialDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_aeidf")]
+drop_percent = 1.0
+health_component = NodePath("../HealthComponent")
+
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_3gb4p")]
+position = Vector2(0, -4)
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+shape = SubResource("CircleShape2D_dvtli")
+debug_color = Color(0.976013, 0, 0.415076, 0.42)
+
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals"]
+position = Vector2(0, -4)
+texture = ExtResource("5_ocrri")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_ij5o3")
