@@ -6,10 +6,14 @@ const SPAWN_RADIUS = 300
 @export var base_spawn_time: float = 1
 @export var spawn_time_decrease_step: float = 0.1
 @export var min_spawn_time: float = 0.3
-@export var spawn_enemy_scene: PackedScene
+@export var basic_enemy_scene: PackedScene
+@export var rat_enemy_scene: PackedScene
+@export var wizard_enemy_scene: PackedScene
 @export var arena_time_manager: ArenaTimeManager
 
 @onready var timer = $Timer
+var enemy_table = WeightedTable.new()
+
 
 func _ready():
 	assert(arena_time_manager != null)
@@ -18,6 +22,7 @@ func _ready():
 	timer.timeout.connect(on_timer_timeout)
 	timer.wait_time = base_spawn_time
 	arena_time_manager.arena_difficulty_increased.connect(on_arena_difficulty_increased)
+	enemy_table.add_item(basic_enemy_scene, 1)
 
 
 func get_spawn_position() -> Vector2:
@@ -43,8 +48,10 @@ func get_spawn_position() -> Vector2:
 			
 	return spawn_position
 
+
 func spawn_enemy():
-	var enemy = spawn_enemy_scene.instantiate() as Node2D
+	var enemy_scene = enemy_table.pick_item()
+	var enemy = enemy_scene.instantiate() as Node2D
 	var entities_layer = get_tree().get_first_node_in_group("entities_layer")
 	entities_layer.add_child(enemy)
 	enemy.global_position = get_spawn_position()
@@ -60,4 +67,10 @@ func on_arena_difficulty_increased(arena_difficulty: int):
 	var number_of_increases = level_time / arena_time_manager.DIFFICULTY_INTERVAL
 	var time_off = (spawn_time_decrease_step / number_of_increases) * arena_difficulty
 	timer.wait_time = max(timer.wait_time - time_off, min_spawn_time)
+	
+	if arena_difficulty == 1:
+		enemy_table.add_item(rat_enemy_scene, 20)
+	if arena_difficulty == 2:
+		enemy_table.add_item(wizard_enemy_scene, 50)
+		
 	
