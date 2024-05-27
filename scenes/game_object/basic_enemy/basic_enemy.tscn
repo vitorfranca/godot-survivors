@@ -26,6 +26,8 @@ drop_percent = 1.0
 health_component = NodePath("../HealthComponent")
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_5tlfy")]
+visible = false
+position = Vector2(0, -2)
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
@@ -34,9 +36,11 @@ shape = SubResource("CircleShape2D_dvtli")
 debug_color = Color(0.976013, 0, 0.415076, 0.42)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -2)
 texture = ExtResource("1_fgl6j")
 offset = Vector2(0, -4)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -4)
+visible = false
+position = Vector2(0, -6)
 shape = SubResource("CircleShape2D_ij5o3")

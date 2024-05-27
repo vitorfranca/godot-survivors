@@ -1,0 +1,27 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"godotTools.editorPath.godot4": "c:\\Users\\khaii\\Apps\\Godot.exe",
+		"files.exclude": {
+			"**/.git": true,
+			"**/.svn": true,
+			"**/.hg": true,
+			"**/CVS": true,
+			"**/.DS_Store": true,
+			"**/Thumbs.db": true,
+			"**/*.godot": true,
+			"**/*.tscn": true,
+			"**/*.tres": true,
+			"**/*.tmp": true,
+			"**/*.png*": true,
+			"**/*.svg*": true,
+			"**/build": true,
+			"**/.godot": true,
+			"**/assets": true,
+		}
+	}
+}
