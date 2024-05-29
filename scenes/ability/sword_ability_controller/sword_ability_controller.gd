@@ -10,7 +10,7 @@ extends Node
 @export var base_wait_time: float = 1.5
 
 var instances = []
-var player: Node2D
+var player: Player
 
 func _ready():
 	$Timer.wait_time = base_wait_time
@@ -24,6 +24,7 @@ func _process(_delta):
 			instances.erase(instance)
 			continue
 		instance.global_position = r_hand.global_position
+		instance.scale.x = 1 if player.visuals.scale.x > 0 else -1
 
 
 func on_timer_timeout():
