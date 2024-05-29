@@ -1,12 +1,53 @@
-[gd_scene load_steps=13 format=3 uid="uid://ddqdf7bbpp5sr"]
+[gd_scene load_steps=16 format=3 uid="uid://ddqdf7bbpp5sr"]
 
 [ext_resource type="Texture2D" uid="uid://b31jcsij7xcqi" path="res://scenes/game_object/enemy/wizard_enemy/wizard_enemy.png" id="1_4qisc"]
 [ext_resource type="Script" path="res://scenes/game_object/enemy/wizard_enemy/wizard_enemy.gd" id="1_thy6p"]
-[ext_resource type="PackedScene" uid="uid://8yyybjo61tko" path="res://scenes/component/health_component.tscn" id="1_ypq8m"]
-[ext_resource type="PackedScene" uid="uid://drf26ya2bc016" path="res://scenes/component/velocity_component.tscn" id="2_jxk3b"]
-[ext_resource type="PackedScene" uid="uid://o0bw3qo1cxb3" path="res://scenes/component/death_component.tscn" id="2_xw755"]
-[ext_resource type="PackedScene" uid="uid://dt1p5hucw0viu" path="res://scenes/component/vial_drop_component.tscn" id="3_fjhx2"]
-[ext_resource type="PackedScene" uid="uid://b0o52qx2odbi5" path="res://scenes/component/hurtbox_component.tscn" id="3_kcxon"]
+[ext_resource type="PackedScene" uid="uid://8yyybjo61tko" path="res://scenes/component/health_component/health_component.tscn" id="2_hmeop"]
+[ext_resource type="PackedScene" uid="uid://drf26ya2bc016" path="res://scenes/component/velocity_component/velocity_component.tscn" id="3_ehmh7"]
+[ext_resource type="PackedScene" uid="uid://dt1p5hucw0viu" path="res://scenes/component/vial_drop_component/vial_drop_component.tscn" id="4_ts12c"]
+[ext_resource type="PackedScene" uid="uid://c1jjjr1p5ufff" path="res://scenes/component/hit_flash_component/hit_flash_component.tscn" id="5_3yv33"]
+[ext_resource type="Shader" path="res://scenes/component/hit_flash_component/hit_flash_component.gdshader" id="6_cw24s"]
+[ext_resource type="PackedScene" uid="uid://o0bw3qo1cxb3" path="res://scenes/component/death_component/death_component.tscn" id="7_gypi2"]
+[ext_resource type="PackedScene" uid="uid://b0o52qx2odbi5" path="res://scenes/component/hurtbox_component/hurtbox_component.tscn" id="8_p66ig"]
+
+[sub_resource type="Animation" id="Animation_kirou"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_4yun4"]
 resource_name = "walk"
@@ -67,50 +108,16 @@ tracks/3/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_kirou"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ajkxa"]
 _data = {
 "RESET": SubResource("Animation_kirou"),
 "walk": SubResource("Animation_4yun4")
 }
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6ux6c"]
+resource_local_to_scene = true
+shader = ExtResource("6_cw24s")
+shader_parameter/lerp_percent = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7fi4d"]
 radius = 9.0
@@ -129,22 +136,27 @@ libraries = {
 }
 autoplay = "walk"
 
-[node name="HealthComponent" parent="." instance=ExtResource("1_ypq8m")]
-max_health = 30.0
+[node name="HealthComponent" parent="." instance=ExtResource("2_hmeop")]
+max_health = 25.0
 
-[node name="VelocityComponent" parent="." instance=ExtResource("2_jxk3b")]
-max_speed = 60
+[node name="VelocityComponent" parent="." instance=ExtResource("3_ehmh7")]
+max_speed = 65
 acceleration = 20.0
 
-[node name="VialDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_fjhx2")]
+[node name="VialDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_ts12c")]
 drop_percent = 0.75
 health_component = NodePath("../HealthComponent")
 
-[node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("2_xw755")]
+[node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_3yv33")]
+hit_flash_material = SubResource("ShaderMaterial_6ux6c")
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/Sprite2D")
 
-[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_kcxon")]
+[node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("7_gypi2")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../Visuals/Sprite2D")
+
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("8_p66ig")]
 visible = false
 position = Vector2(0, -8)
 health_component = NodePath("../HealthComponent")

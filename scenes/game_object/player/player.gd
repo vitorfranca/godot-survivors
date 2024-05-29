@@ -63,11 +63,8 @@ func update_health_display():
 
 func increase_player_health():
 	var prev_max_health = health_component.max_health
-	print("prev max health %s" % prev_max_health)
 	health_component.update_max_health_percentage(1.1)
-	print("new max health %s" % health_component.max_health)
 	var health_increase = health_component.max_health - prev_max_health
-	print('health increase %s' % health_increase)
 	health_component.heal(health_increase)
 	
 
@@ -92,8 +89,6 @@ func on_health_updated():
 func on_ability_upgrade_added(ability_upgrade: AbilityUpgrade, _current_upgrades: Dictionary):
 	current_level += 1
 	increase_player_health()
-	print(current_level)
-	print("%s / %s" % [health_component.current_health, health_component.max_health])
 	
 	if not ability_upgrade is Ability:
 		return

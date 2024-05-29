@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/ability/sword_ability/sword_ability.gd" id="1_3pewt"]
 [ext_resource type="Texture2D" uid="uid://p5xykw6fd1ev" path="res://scenes/ability/sword_ability/sword.png" id="1_7ofuy"]
-[ext_resource type="PackedScene" uid="uid://byfj1pekn27wp" path="res://scenes/component/hitbox_component.tscn" id="2_xykyp"]
+[ext_resource type="PackedScene" uid="uid://byfj1pekn27wp" path="res://scenes/component/hitbox_component/hitbox_component.tscn" id="2_xykyp"]
 
 [sub_resource type="Animation" id="Animation_mwqes"]
 length = 0.001

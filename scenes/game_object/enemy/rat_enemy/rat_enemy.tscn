@@ -1,12 +1,14 @@
-[gd_scene load_steps=13 format=3 uid="uid://dpcjxhw2sf12l"]
+[gd_scene load_steps=16 format=3 uid="uid://dpcjxhw2sf12l"]
 
 [ext_resource type="Script" path="res://scenes/game_object/enemy/basic_enemy/basic_enemy.gd" id="1_nqltl"]
-[ext_resource type="PackedScene" uid="uid://8yyybjo61tko" path="res://scenes/component/health_component.tscn" id="2_n36yc"]
-[ext_resource type="PackedScene" uid="uid://drf26ya2bc016" path="res://scenes/component/velocity_component.tscn" id="3_nqn3k"]
-[ext_resource type="PackedScene" uid="uid://o0bw3qo1cxb3" path="res://scenes/component/death_component.tscn" id="3_pq3r6"]
-[ext_resource type="PackedScene" uid="uid://dt1p5hucw0viu" path="res://scenes/component/vial_drop_component.tscn" id="3_rckii"]
-[ext_resource type="PackedScene" uid="uid://b0o52qx2odbi5" path="res://scenes/component/hurtbox_component.tscn" id="4_dheti"]
+[ext_resource type="PackedScene" uid="uid://8yyybjo61tko" path="res://scenes/component/health_component/health_component.tscn" id="2_tiv6n"]
+[ext_resource type="PackedScene" uid="uid://drf26ya2bc016" path="res://scenes/component/velocity_component/velocity_component.tscn" id="3_giggm"]
+[ext_resource type="PackedScene" uid="uid://dt1p5hucw0viu" path="res://scenes/component/vial_drop_component/vial_drop_component.tscn" id="4_scei8"]
+[ext_resource type="PackedScene" uid="uid://o0bw3qo1cxb3" path="res://scenes/component/death_component/death_component.tscn" id="5_cewi2"]
 [ext_resource type="Texture2D" uid="uid://p2cd06ln6as5" path="res://scenes/game_object/enemy/rat_enemy/rat_enemy.png" id="5_mrnqy"]
+[ext_resource type="PackedScene" uid="uid://c1jjjr1p5ufff" path="res://scenes/component/hit_flash_component/hit_flash_component.tscn" id="5_vkotu"]
+[ext_resource type="Shader" path="res://scenes/component/hit_flash_component/hit_flash_component.gdshader" id="6_8v3sr"]
+[ext_resource type="PackedScene" uid="uid://b0o52qx2odbi5" path="res://scenes/component/hurtbox_component/hurtbox_component.tscn" id="6_u7ji2"]
 
 [sub_resource type="Animation" id="Animation_18282"]
 length = 0.001
@@ -82,13 +84,18 @@ _data = {
 "walk": SubResource("Animation_t6dsg")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c3ue0"]
+resource_local_to_scene = true
+shader = ExtResource("6_8v3sr")
+shader_parameter/lerp_percent = 0.0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_dvtli"]
 radius = 9.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ij5o3"]
 radius = 7.0
 
-[node name="BasicEnemy" type="CharacterBody2D" groups=["enemy"]]
+[node name="RatEnemy" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 8
 collision_mask = 9
 motion_mode = 1
@@ -101,20 +108,25 @@ libraries = {
 }
 autoplay = "walk"
 
-[node name="HealthComponent" parent="." instance=ExtResource("2_n36yc")]
+[node name="HealthComponent" parent="." instance=ExtResource("2_tiv6n")]
 max_health = 6.0
 
-[node name="VelocityComponent" parent="." instance=ExtResource("3_nqn3k")]
+[node name="VelocityComponent" parent="." instance=ExtResource("3_giggm")]
 acceleration = 40.0
 
-[node name="VialDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_rckii")]
+[node name="VialDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_scei8")]
 health_component = NodePath("../HealthComponent")
 
-[node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("3_pq3r6")]
+[node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_vkotu")]
+hit_flash_material = SubResource("ShaderMaterial_c3ue0")
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/Sprite2D")
 
-[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_dheti")]
+[node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_cewi2")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../Visuals/Sprite2D")
+
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("6_u7ji2")]
 position = Vector2(0, -4)
 health_component = NodePath("../HealthComponent")
 
