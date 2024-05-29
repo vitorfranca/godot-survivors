@@ -12,6 +12,8 @@ extends Node
 var instances = []
 var player: Player
 
+@export var SPAWN_AT_PLAYER: bool = false
+
 func _ready():
 	$Timer.wait_time = base_wait_time
 	$Timer.timeout.connect(on_timer_timeout)
@@ -19,17 +21,20 @@ func _ready():
 
 
 func _process(_delta):
-	for instance in instances:
-		if !is_instance_valid(instance):
-			instances.erase(instance)
-			continue
-		instance.global_position = r_hand.global_position
-		instance.scale.x = 1 if player.visuals.scale.x > 0 else -1
+	if SPAWN_AT_PLAYER:
+		for instance in instances:
+			if !is_instance_valid(instance):
+				instances.erase(instance)
+				continue
+			instance.global_position = r_hand.global_position
+			instance.scale.x = 1 if player.visuals.scale.x > 0 else -1
 
 
 func on_timer_timeout():
-	_spawn_at_player()
-	#_spawn_at_enemies()
+	if SPAWN_AT_PLAYER:  
+		_spawn_at_player()
+	else:
+		_spawn_at_enemies()
 
 
 func _spawn_at_enemies():

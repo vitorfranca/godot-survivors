@@ -14,4 +14,5 @@ func format_time(time_elapsed: float) -> String:
 	var minutes = floor(time_elapsed / 60)
 	var seconds = time_elapsed - (minutes * 60)
 
-	return "%02d:%05.2f" % [minutes, seconds]
+	return "%02d:%02d" % [minutes, seconds]
+	#return "%02d:%05.2f" % [minutes, seconds]

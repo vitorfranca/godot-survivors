@@ -36,6 +36,10 @@ window/layer_1="Terrain"
 
 version_control/version=""
 
+[gui]
+
+theme/custom="res://resources/theme/theme.tres"
+
 [input]
 
 move_left={
