@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://o0bw3qo1cxb3"]
 
-[ext_resource type="Script" path="res://scenes/component/death_component.gd" id="1_ilrv4"]
+[ext_resource type="Script" path="res://scenes/component/death_component/death_component.gd" id="1_ilrv4"]
 [ext_resource type="Texture2D" uid="uid://bf5o8brr48ty1" path="res://scenes/game_object/enemy/basic_enemy/basic_enemy.png" id="2_3t1jp"]
 
 [sub_resource type="Animation" id="Animation_nlrrd"]

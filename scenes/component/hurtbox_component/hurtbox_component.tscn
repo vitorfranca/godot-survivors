@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b0o52qx2odbi5"]
 
-[ext_resource type="Script" path="res://scenes/component/hurtbox_component.gd" id="1_ft0wo"]
+[ext_resource type="Script" path="res://scenes/component/hurtbox_component/hurtbox_component.gd" id="1_ft0wo"]
 
 [node name="HurtboxComponent" type="Area2D"]
 modulate = Color(1, 0, 0, 1)
