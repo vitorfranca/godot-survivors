@@ -1,5 +1,5 @@
-extends Resource
 class_name AbilityUpgrade
+extends Resource
 
 @export var icon_path: String
 @export var id: String

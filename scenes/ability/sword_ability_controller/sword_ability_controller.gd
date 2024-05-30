@@ -1,12 +1,14 @@
 extends Node
 
-@onready var sword_rate_upgrade = preload("res://resources/upgrades/sword_rate.tres")
+@onready var sword_rate_upgrade = preload("res://resources/abilities/upgrades/sword_rate.tres")
+@onready var sword_damage_upgrade = preload("res://resources/abilities/upgrades/sword_damage.tres")
 @onready var l_hand = %LHand
 @onready var r_hand = %RHand
 
 @export var sword_ability: PackedScene
 @export var max_range: float = 150
-@export var damage = 5
+@export var base_damage: int = 5
+@export var aditional_damage_percent: int = 1
 @export var base_wait_time: float = 1.5
 
 var instances = []
@@ -61,13 +63,14 @@ func _spawn_at_enemies():
 	
 	var sword_instance = sword_ability.instantiate() as SwordAbility
 	player.get_parent().add_child(sword_instance)
-	sword_instance.hitbox_component.damage = damage
+	sword_instance.hitbox_component.damage = base_damage * aditional_damage_percent
 
 	sword_instance.global_position = enemies[0].global_position
 	sword_instance.global_position += Vector2.RIGHT.rotated(randf_range(0, TAU)) * 4
 	
 	var enemy_direction = enemies[0].global_position - sword_instance.global_position
 	sword_instance.rotation = enemy_direction.angle()
+
 
 func _spawn_at_player():
 	if sword_ability == null:
@@ -80,16 +83,22 @@ func _spawn_at_player():
 	var sword_instance = sword_ability.instantiate() as SwordAbility
 	var foreground_layer = get_tree().get_first_node_in_group("foreground_layer")
 	foreground_layer.add_child(sword_instance)
-	sword_instance.hitbox_component.damage = damage
+	sword_instance.hitbox_component.damage = base_damage * aditional_damage_percent
 
 	sword_instance.global_position = r_hand.global_position
 	instances.append(sword_instance)
 
 
 func on_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary):
-	if upgrade.id != sword_rate_upgrade.id:
-		return
-	
-	var percent_reduction = current_upgrades[sword_rate_upgrade.id]["quantity"] * .1
-	$Timer.wait_time = base_wait_time * (1 - percent_reduction)
-	$Timer.start()
+	print(upgrade.id)
+	match upgrade.id:
+		sword_rate_upgrade.id:
+			print("sword rate update")
+			var percent_reduction = current_upgrades[sword_rate_upgrade.id]["quantity"] * .1
+			$Timer.wait_time = base_wait_time * (1 - percent_reduction)
+			$Timer.start()
+		sword_damage_upgrade.id:
+			print("sword damage update")
+			aditional_damage_percent *= 1.15
+			
+

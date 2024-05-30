@@ -8,10 +8,10 @@ extends CharacterBody2D
 @onready var animation_player = $AnimationPlayer
 @onready var visuals = $Visuals
 
+@export var experience_manager: ExperienceManager
 @export var speed = 125
 @export var acceleration_smoothing = 25
 
-var current_level = 1
 var number_colliding_bodies = 0
 var move_sign = 0
 
@@ -20,6 +20,7 @@ func _ready():
 	$CollisionArea2D.body_exited.connect(on_body_exited)
 	damage_interval_timer.timeout.connect(on_damage_interval_timer_timeout)
 	health_component.health_updated.connect(on_health_updated)
+	experience_manager.level_up.connect(on_level_up)
 	GameEvents.ability_upgrade_added.connect(on_ability_upgrade_added)
 	update_health_display()
 
@@ -87,11 +88,11 @@ func on_health_updated():
 	
 
 func on_ability_upgrade_added(ability_upgrade: AbilityUpgrade, _current_upgrades: Dictionary):
-	current_level += 1
-	increase_player_health()
-	
 	if not ability_upgrade is Ability:
 		return
 	var ability = ability_upgrade as Ability
 	abilities.add_child(ability.ability_controller_scene.instantiate())
 	
+
+func on_level_up(_new_level: int):
+	increase_player_health()

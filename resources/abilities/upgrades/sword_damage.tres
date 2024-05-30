@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://ctybutyg4jmdo"]
+
+[ext_resource type="Script" path="res://resources/abilities/upgrades/ability_upgrade.gd" id="1_2eyyk"]
+
+[resource]
+script = ExtResource("1_2eyyk")
+icon_path = "res://scenes/ability/sword_ability/sword.png"
+id = "sword_damage"
+max_level = 9
+name = "Sword Damage"
+description = "Increases Sword attack damage by 15%."

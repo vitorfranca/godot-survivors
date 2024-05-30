@@ -47,9 +47,10 @@ layer_0/tile_data = PackedInt32Array(1900573, 1, 4, 1835037, 1, 4, 1769501, 6553
 
 [node name="Entities" type="Node2D" parent="." groups=["entities_layer"]]
 
-[node name="Player" parent="Entities" instance=ExtResource("1_8pe1k")]
+[node name="Player" parent="Entities" node_paths=PackedStringArray("experience_manager") instance=ExtResource("1_8pe1k")]
 unique_name_in_owner = true
 position = Vector2(240, 240)
+experience_manager = NodePath("../../ExperienceManager")
 
 [node name="Foreground" type="Node2D" parent="." groups=["foreground_layer"]]
 z_index = 1

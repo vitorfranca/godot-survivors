@@ -14,7 +14,7 @@
 			"**/.DS_Store": true,
 			"**/Thumbs.db": true,
 			"**/*.godot": true,
-			"**/*.tscn": true,
+			// "**/*.tscn": true,
 			"**/*.tres": true,
 			"**/*.tmp": true,
 			"**/*.png*": true,

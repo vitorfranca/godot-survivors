@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://d0ybq8c65jbfx"]
+
+[ext_resource type="Script" path="res://resources/abilities/upgrades/ability_upgrade.gd" id="1_ubakl"]
+
+[resource]
+script = ExtResource("1_ubakl")
+icon_path = "res://scenes/ability/sword_ability/sword.png"
+id = "axe_damage"
+max_level = 9
+name = "Axe Quickness"
+description = "Increases Axe attack damage by 10%."
