@@ -93,7 +93,7 @@ func _spawn_at_enemies():
 
 	var sword_instance = ability_scene.instantiate() as SwordAbility
 	player.get_parent().add_child(sword_instance)
-	sword_instance.hitbox_component.damage = current_damage
+	sword_instance.hitbox_component.damage = ceilf(current_damage)
 
 	sword_instance.global_position = enemies[0].global_position
 	sword_instance.global_position += Vector2.RIGHT.rotated(randf_range(0, TAU)) * 4
@@ -113,7 +113,7 @@ func _spawn_at_player():
 	var sword_instance = ability_scene.instantiate() as SwordAbility
 	var foreground_layer = get_tree().get_first_node_in_group("foreground_layer")
 	foreground_layer.add_child(sword_instance)
-	sword_instance.hitbox_component.damage = current_damage
+	sword_instance.hitbox_component.damage = ceilf(current_damage)
 
 	sword_instance.global_position = r_hand.global_position
 	instances.append(sword_instance)

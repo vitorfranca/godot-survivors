@@ -36,7 +36,7 @@ func spawn_ability():
 	var axe_instance = ability_scene.instantiate() as AxeAbility
 	foreground.add_child(axe_instance)
 	axe_instance.global_position = player.global_position
-	axe_instance.hitbox_component.damage = current_damage
+	axe_instance.hitbox_component.damage = ceilf(current_damage)
 
 
 func upgrade_ability(upgrade: AbilityUpgrade, current_upgrades: Dictionary):
