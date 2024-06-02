@@ -1,13 +1,28 @@
-[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://lsw5ljkqwv2p"]
+[gd_resource type="Resource" script_class="Ability" load_steps=5 format=3 uid="uid://lsw5ljkqwv2p"]
 
-[ext_resource type="PackedScene" uid="uid://gdswiq6121ua" path="res://scenes/ability/axe_ability_controller/axe_ability_controller.tscn" id="1_vc04b"]
+[ext_resource type="Script" path="res://scenes/ability/axe_ability_controller/axe_ability_controller.gd" id="1_w5qph"]
+[ext_resource type="PackedScene" uid="uid://ccxrmkdcdxxtw" path="res://scenes/ability/axe_ability/axe_ability.tscn" id="2_ehrpk"]
 [ext_resource type="Script" path="res://resources/abilities/ability.gd" id="2_ei45v"]
+
+[sub_resource type="PackedScene" id="PackedScene_kfjq1"]
+_bundled = {
+"conn_count": 0,
+"conns": PackedInt32Array(),
+"editable_instances": [],
+"names": PackedStringArray("AxeAbilityController", "Node", "script", "axe_ability_scene", "Timer", "Timer", "wait_time", "autostart"),
+"node_count": 2,
+"node_paths": [NodePath(".")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 2, 2, 0, 3, 1, 0, 1073741824, 0, 5, 4, -1, 2, 6, 2, 7, 3, 0),
+"variants": [ExtResource("1_w5qph"), ExtResource("2_ehrpk"), 3.5, true],
+"version": 3
+}
 
 [resource]
 script = ExtResource("2_ei45v")
-ability_controller_scene = ExtResource("1_vc04b")
+ability_controller_scene = SubResource("PackedScene_kfjq1")
 icon_path = "res://scenes/ability/axe_ability/axe.png"
 id = "axe"
 max_level = 1
 name = "Axe"
+value = 0.0
 description = "Throws out a spinning axe."

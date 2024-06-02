@@ -6,9 +6,10 @@ extends Node
 @onready var r_hand = %RHand
 
 @export var sword_ability: PackedScene
+@export var base_ability_resource: Resource
 @export var max_range: float = 150
 @export var base_damage: int = 5
-@export var aditional_damage_percent: int = 1
+@export var aditional_damage_percent: float = 1
 @export var base_wait_time: float = 1.5
 
 var instances = []
@@ -32,35 +33,40 @@ func _process(_delta):
 			instance.scale.x = 1 if player.visuals.scale.x > 0 else -1
 
 
-func on_timer_timeout():
-	if SPAWN_AT_PLAYER:  
-		_spawn_at_player()
-	else:
-		_spawn_at_enemies()
+func upgrade_ability(upgrade: AbilityUpgrade, current_upgrades: Dictionary):
+	var value = upgrade.value / 100
+	match upgrade.id:
+		sword_rate_upgrade.id:
+			var current_level = current_upgrades[sword_rate_upgrade.id]["quantity"]
+			var percent_reduction = current_level * value
+			$Timer.wait_time = base_wait_time * (1 - percent_reduction)
+			$Timer.start()
+		sword_damage_upgrade.id:
+			aditional_damage_percent *= (1 + value)
 
 
 func _spawn_at_enemies():
 	if sword_ability == null:
 		return
-		
+
 	player = get_tree().get_first_node_in_group("player") as Node2D
 	if player == null:
 		return
-	
+
 	var enemies = get_tree().get_nodes_in_group("enemy")
 	enemies = enemies.filter(func(enemy: Node2D):
 		return enemy.global_position.distance_squared_to(player.global_position) < pow(max_range, 2)
 	)
-	
+
 	if enemies.size() == 0:
 		return
-	
+
 	enemies.sort_custom(func(a: Node2D, b: Node2D):
 		var a_distance = a.global_position.distance_squared_to(player.global_position)
 		var b_distance = b.global_position.distance_squared_to(player.global_position)
 		return a_distance < b_distance
 	)
-	
+
 	var sword_instance = sword_ability.instantiate() as SwordAbility
 	player.get_parent().add_child(sword_instance)
 	sword_instance.hitbox_component.damage = base_damage * aditional_damage_percent
@@ -75,11 +81,11 @@ func _spawn_at_enemies():
 func _spawn_at_player():
 	if sword_ability == null:
 		return
-		
+
 	player = get_tree().get_first_node_in_group("player") as Node2D
 	if player == null:
 		return
-	
+
 	var sword_instance = sword_ability.instantiate() as SwordAbility
 	var foreground_layer = get_tree().get_first_node_in_group("foreground_layer")
 	foreground_layer.add_child(sword_instance)
@@ -90,15 +96,12 @@ func _spawn_at_player():
 
 
 func on_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary):
-	print(upgrade.id)
-	match upgrade.id:
-		sword_rate_upgrade.id:
-			print("sword rate update")
-			var percent_reduction = current_upgrades[sword_rate_upgrade.id]["quantity"] * .1
-			$Timer.wait_time = base_wait_time * (1 - percent_reduction)
-			$Timer.start()
-		sword_damage_upgrade.id:
-			print("sword damage update")
-			aditional_damage_percent *= 1.15
-			
+	if upgrade.id.begins_with(base_ability_resource.id):
+		upgrade_ability(upgrade, current_upgrades)
 
+
+func on_timer_timeout():
+	if SPAWN_AT_PLAYER:  
+		_spawn_at_player()
+	else:
+		_spawn_at_enemies()

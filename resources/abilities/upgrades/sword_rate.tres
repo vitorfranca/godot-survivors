@@ -8,4 +8,5 @@ icon_path = "res://scenes/ability/sword_ability/sword.png"
 id = "sword_rate"
 max_level = 9
 name = "Sword Quickness"
+value = 10.0
 description = "Increases Sword attack rate by 10%."
