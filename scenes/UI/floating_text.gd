@@ -2,6 +2,9 @@ extends Node2D
 
 @onready var label = $Label
 
+const FONT_SCALE = 0.5
+const FONT_GROW_SCALE = 1
+
 
 func _ready():
 	pass
@@ -25,7 +28,7 @@ func start(text: String):
 	tween.tween_callback(queue_free)
 	
 	var scale_tween = create_tween()
-	scale_tween.tween_property(self, "scale", Vector2.ONE * 1.5, .15)\
+	scale_tween.tween_property(self, "scale", Vector2.ONE * FONT_GROW_SCALE, .15)\
 		.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
-	scale_tween.tween_property(self, "scale", Vector2.ONE, .15)\
+	scale_tween.tween_property(self, "scale", Vector2.ONE * FONT_SCALE, .15)\
 		.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)

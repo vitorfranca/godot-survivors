@@ -1,40 +1,224 @@
-[gd_scene load_steps=2 format=3 uid="uid://cjvn4rudiqqei"]
+[gd_scene load_steps=11 format=3 uid="uid://cjvn4rudiqqei"]
 
 [ext_resource type="Script" path="res://scenes/ui/ability_upgrade_card.gd" id="1_d75db"]
+[ext_resource type="Texture2D" uid="uid://b0be4blaq64ik" path="res://scenes/ability/axe_ability/axe.png" id="2_3dqww"]
 
-[node name="AbilityUpgradeCard" type="PanelContainer"]
-custom_minimum_size = Vector2(120, 150)
-offset_right = 136.0
-offset_bottom = 150.0
+[sub_resource type="Animation" id="Animation_4mnn1"]
+resource_name = "in"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.4),
+"transitions": PackedFloat32Array(2.54912, 0.258817, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_qilo4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vxpcc"]
+resource_name = "selected"
+length = 0.4
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.4),
+"transitions": PackedFloat32Array(2, 0.203063, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_0msr2"]
+resource_name = "discard"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.2),
+"transitions": PackedFloat32Array(2, 0.5, 0.5),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1e-05, 1e-05)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0emkn"]
+_data = {
+"RESET": SubResource("Animation_qilo4"),
+"discard": SubResource("Animation_0msr2"),
+"in": SubResource("Animation_4mnn1"),
+"selected": SubResource("Animation_vxpcc")
+}
+
+[sub_resource type="Animation" id="Animation_61ct8"]
+resource_name = "hover"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.2),
+"transitions": PackedFloat32Array(-2, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.0872665, 0.0872665, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_wk1hc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yslrv"]
+_data = {
+"RESET": SubResource("Animation_wk1hc"),
+"hover": SubResource("Animation_61ct8")
+}
+
+[node name="AbilityUpgradeCard" type="PanelContainer" groups=["upgrade_card"]]
+custom_minimum_size = Vector2(120, 140)
+offset_right = 142.0
+offset_bottom = 140.0
+pivot_offset = Vector2(71, 70)
 script = ExtResource("1_d75db")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0emkn")
+}
+
+[node name="HoverAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_yslrv")
+}
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
+mouse_filter = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 16
+mouse_filter = 2
+theme_override_constants/separation = 12
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"AlternatePanelContainer"
 
-[node name="NameLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer"]
+custom_minimum_size = Vector2(0, 17)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+mouse_filter = 2
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="AbilityIcon" type="TextureRect" parent="MarginContainer/VBoxContainer/PanelContainer/HBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+texture = ExtResource("2_3dqww")
+stretch_mode = 2
+
+[node name="NameLabel" type="Label" parent="MarginContainer/VBoxContainer/PanelContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(90, 16)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_type_variation = &"OutlinedLabel"
+theme_override_colors/font_shadow_color = Color(0.14902, 0.168627, 0.266667, 1)
+theme_override_colors/font_outline_color = Color(0.14902, 0.168627, 0.266667, 1)
 text = "Sword Quickness"
+vertical_alignment = 2
+autowrap_mode = 2
 
-[node name="AbilityIcon" type="Sprite2D" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-unique_name_in_owner = true
-centered = false
-offset = Vector2(104, -1)
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_right = 0
 
-[node name="DescriptionLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="DescriptionLabel" type="Label" parent="MarginContainer/VBoxContainer/MarginContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
+theme_type_variation = &"OutlinedLabel"
+theme_override_colors/font_shadow_color = Color(0.14902, 0.168627, 0.266667, 1)
+theme_override_colors/font_outline_color = Color(0.14902, 0.168627, 0.266667, 1)
 text = "Increases Sword attack rate by 10%."
+vertical_alignment = 2
 autowrap_mode = 2
