@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Ability" load_steps=5 format=3 uid="uid://lsw5ljkqwv2p"]
 
-[ext_resource type="Script" path="res://scenes/ability/axe_ability_controller/axe_ability_controller.gd" id="1_w5qph"]
+[ext_resource type="Script" path="res://scenes/ability/axe_ability/axe_ability_controller.gd" id="1_w5qph"]
 [ext_resource type="PackedScene" uid="uid://ccxrmkdcdxxtw" path="res://scenes/ability/axe_ability/axe_ability.tscn" id="2_ehrpk"]
 [ext_resource type="Script" path="res://resources/abilities/ability.gd" id="2_ei45v"]
 
