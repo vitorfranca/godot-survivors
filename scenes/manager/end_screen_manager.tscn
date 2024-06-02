@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cjqlo33s45s0l"]
 
 [ext_resource type="Script" path="res://scenes/manager/end_screen_manager.gd" id="1_3vwl5"]
-[ext_resource type="PackedScene" uid="uid://d3q5mx68v2c8p" path="res://scenes/UI/end_screen.tscn" id="2_5qike"]
+[ext_resource type="PackedScene" uid="uid://d3q5mx68v2c8p" path="res://scenes/ui/end_screen.tscn" id="2_5qike"]
 
 [node name="EndScreenManager" type="Node"]
 script = ExtResource("1_3vwl5")
