@@ -60,4 +60,3 @@ func on_mouse_entered():
 func on_mouse_exited():
 	$HoverAnimationPlayer.play("RESET")
 
-	
