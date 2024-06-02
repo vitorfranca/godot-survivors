@@ -1,9 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://bf3687c7cxd4p"]
+[gd_scene load_steps=12 format=3 uid="uid://bf3687c7cxd4p"]
 
 [ext_resource type="Texture2D" uid="uid://bal7541bdat1u" path="res://scenes/game_object/player/player.png" id="1_8gj82"]
 [ext_resource type="Script" path="res://scenes/game_object/player/player.gd" id="1_y6i7a"]
 [ext_resource type="PackedScene" uid="uid://8yyybjo61tko" path="res://scenes/component/health_component/health_component.tscn" id="2_bk63r"]
-[ext_resource type="PackedScene" uid="uid://y2sb62sm4e04" path="res://scenes/ability/sword_ability_controller/sword_ability_controller.tscn" id="2_xfwsu"]
 
 [sub_resource type="Animation" id="Animation_v8nfe"]
 length = 0.001
@@ -124,8 +123,6 @@ libraries = {
 [node name="HealthComponent" parent="." instance=ExtResource("2_bk63r")]
 
 [node name="Abilities" type="Node" parent="."]
-
-[node name="SwordAbilityController" parent="Abilities" instance=ExtResource("2_xfwsu")]
 
 [node name="DamageIntervalTimer" type="Timer" parent="."]
 wait_time = 0.5

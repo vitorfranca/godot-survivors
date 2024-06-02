@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://d0r1l4netchw6"]
+
+[ext_resource type="Script" path="res://resources/abilities/upgrades/ability_upgrade.gd" id="1_26nyo"]
+
+[resource]
+script = ExtResource("1_26nyo")
+id = "axe_rate"
+max_level = 9
+value = 10.0
+icon_path = "res://scenes/ability/axe_ability/axe.png"
+name = "Axe Quickness"
+description = "Increases Axe attack rate by 10%."

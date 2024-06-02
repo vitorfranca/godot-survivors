@@ -6,7 +6,7 @@
 script = ExtResource("1_ubakl")
 id = "axe_damage"
 max_level = 9
-value = 10.0
+value = 20.0
 icon_path = "res://scenes/ability/axe_ability/axe.png"
-name = "Axe Quickness"
-description = "Increases Axe attack damage by 10%."
+name = "Axe Damage"
+description = "Increases Axe attack damage by 20%."

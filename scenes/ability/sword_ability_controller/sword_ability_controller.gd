@@ -1,30 +1,44 @@
-extends Node
+class_name SwordAbilityController
+extends AbilityController
 
 @onready var sword_rate_upgrade = preload("res://resources/abilities/upgrades/sword_rate.tres")
 @onready var sword_damage_upgrade = preload("res://resources/abilities/upgrades/sword_damage.tres")
-@onready var l_hand = %LHand
-@onready var r_hand = %RHand
+var l_hand: Marker2D
+var r_hand: Marker2D
 
-@export var sword_ability: PackedScene
-@export var base_ability_resource: Resource
+## Initial damage, used for calculate damage upgrades.
+@export var base_damage: float = 5
+
+## Used to calculate damage upgrades.
+@export_range(5, 100, 5) var aditional_damage_percent: float = 10
+
+## Time in between ability spawns.
+@export_range(0.5, 20, 0.5) var base_wait_time: float = 3
+
+## Max enemy distance to attack.
 @export var max_range: float = 150
-@export var base_damage: int = 5
-@export var aditional_damage_percent: float = 1
-@export var base_wait_time: float = 1.5
 
+enum AttackType {SpawnAtPlayer, SpawnAtEnemy}
+## Sword spawns at player hand or at the enemy
+@export var attack_type: AttackType = AttackType.SpawnAtEnemy
+
+var current_damage = base_damage
 var instances = []
 var player: Player
 
-@export var SPAWN_AT_PLAYER: bool = false
-
 func _ready():
+	base_ability = load("res://resources/abilities/sword.tres")
+	ability_scene = load("res://scenes/ability/sword_ability/sword_ability.tscn")
 	$Timer.wait_time = base_wait_time
 	$Timer.timeout.connect(on_timer_timeout)
 	GameEvents.ability_upgrade_added.connect(on_ability_upgrade_added)
+	player = get_tree().get_first_node_in_group('player')
+	l_hand = player.get_node("%LHand")
+	r_hand = player.get_node("%RHand")
 
 
 func _process(_delta):
-	if SPAWN_AT_PLAYER:
+	if attack_type == AttackType.SpawnAtPlayer:
 		for instance in instances:
 			if !is_instance_valid(instance):
 				instances.erase(instance)
@@ -35,22 +49,32 @@ func _process(_delta):
 
 func upgrade_ability(upgrade: AbilityUpgrade, current_upgrades: Dictionary):
 	var value = upgrade.value / 100
+	var current_level = current_upgrades[upgrade.id]["quantity"]
 	match upgrade.id:
 		sword_rate_upgrade.id:
-			var current_level = current_upgrades[sword_rate_upgrade.id]["quantity"]
 			var percent_reduction = current_level * value
 			$Timer.wait_time = base_wait_time * (1 - percent_reduction)
 			$Timer.start()
 		sword_damage_upgrade.id:
-			aditional_damage_percent *= (1 + value)
+			aditional_damage_percent = pow(1 + value, current_level)
+			current_damage = base_damage * aditional_damage_percent
+
+
+func spawn_ability():
+	if attack_type == AttackType.SpawnAtPlayer:  
+		_spawn_at_player()
+	else:
+		_spawn_at_enemies()
 
 
 func _spawn_at_enemies():
-	if sword_ability == null:
+	if ability_scene == null:
+		push_error("ability_scene is null in SwordAbilityController.")
 		return
 
 	player = get_tree().get_first_node_in_group("player") as Node2D
 	if player == null:
+		push_error("Player is null in SwordAbilityController.")
 		return
 
 	var enemies = get_tree().get_nodes_in_group("enemy")
@@ -67,9 +91,9 @@ func _spawn_at_enemies():
 		return a_distance < b_distance
 	)
 
-	var sword_instance = sword_ability.instantiate() as SwordAbility
+	var sword_instance = ability_scene.instantiate() as SwordAbility
 	player.get_parent().add_child(sword_instance)
-	sword_instance.hitbox_component.damage = base_damage * aditional_damage_percent
+	sword_instance.hitbox_component.damage = current_damage
 
 	sword_instance.global_position = enemies[0].global_position
 	sword_instance.global_position += Vector2.RIGHT.rotated(randf_range(0, TAU)) * 4
@@ -79,29 +103,21 @@ func _spawn_at_enemies():
 
 
 func _spawn_at_player():
-	if sword_ability == null:
+	if ability_scene == null:
 		return
 
 	player = get_tree().get_first_node_in_group("player") as Node2D
 	if player == null:
 		return
 
-	var sword_instance = sword_ability.instantiate() as SwordAbility
+	var sword_instance = ability_scene.instantiate() as SwordAbility
 	var foreground_layer = get_tree().get_first_node_in_group("foreground_layer")
 	foreground_layer.add_child(sword_instance)
-	sword_instance.hitbox_component.damage = base_damage * aditional_damage_percent
+	sword_instance.hitbox_component.damage = current_damage
 
 	sword_instance.global_position = r_hand.global_position
 	instances.append(sword_instance)
 
 
-func on_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary):
-	if upgrade.id.begins_with(base_ability_resource.id):
-		upgrade_ability(upgrade, current_upgrades)
-
-
 func on_timer_timeout():
-	if SPAWN_AT_PLAYER:  
-		_spawn_at_player()
-	else:
-		_spawn_at_enemies()
+	spawn_ability()

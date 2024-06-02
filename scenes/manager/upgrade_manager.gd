@@ -9,6 +9,9 @@ var upgrade_pool: WeightedTable = WeightedTable.new()
 
 var upgrade_axe = preload("res://resources/abilities/axe.tres")
 var upgrade_axe_damage = preload("res://resources/abilities/upgrades/axe_damage.tres")
+var upgrade_axe_rate = preload("res://resources/abilities/upgrades/axe_rate.tres")
+
+var upgrade_sword = preload("res://resources/abilities/sword.tres")
 var upgrade_sword_rate = preload("res://resources/abilities/upgrades/sword_rate.tres")
 var upgrade_sword_damage = preload("res://resources/abilities/upgrades/sword_damage.tres")
 
@@ -20,8 +23,7 @@ var upgrade_sword_damage = preload("res://resources/abilities/upgrades/sword_dam
 func _ready():
 	#_load_upgrades()
 	upgrade_pool.add_item(upgrade_axe, 10)
-	upgrade_pool.add_item(upgrade_sword_damage, 10)
-	upgrade_pool.add_item(upgrade_sword_rate, 10)
+	upgrade_pool.add_item(upgrade_sword, 10)
 	
 	experience_manager.level_up.connect(on_level_up)
 
@@ -47,10 +49,15 @@ func apply_upgrade(upgrade: AbilityUpgrade):
 
 
 func update_upgrade_pool(chosen_upgrade: AbilityUpgrade):
-	if chosen_upgrade.id == upgrade_axe.id:
-		upgrade_pool.add_item(upgrade_axe_damage, 10)
-	
-	
+	match chosen_upgrade.id:
+		upgrade_axe.id:
+			upgrade_pool.add_item(upgrade_axe_damage, 10)
+			upgrade_pool.add_item(upgrade_axe_rate, 10)
+		upgrade_sword.id:
+			upgrade_pool.add_item(upgrade_sword_damage, 10)
+			upgrade_pool.add_item(upgrade_sword_rate, 10)
+
+
 func select_upgrades() -> Array[AbilityUpgrade]:
 	var chosen_upgrades: Array[AbilityUpgrade] = []
 	for i in 3:

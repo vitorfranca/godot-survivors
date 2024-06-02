@@ -1,25 +1,11 @@
-[gd_resource type="Resource" script_class="Ability" load_steps=5 format=3 uid="uid://daunbvfc58taw"]
+[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://daunbvfc58taw"]
 
-[ext_resource type="Script" path="res://scenes/ability/axe_ability_controller/axe_ability_controller.gd" id="1_k4f05"]
-[ext_resource type="PackedScene" uid="uid://ccxrmkdcdxxtw" path="res://scenes/ability/axe_ability/axe_ability.tscn" id="2_kge8i"]
+[ext_resource type="PackedScene" uid="uid://y2sb62sm4e04" path="res://scenes/ability/sword_ability_controller/sword_ability_controller.tscn" id="1_r246h"]
 [ext_resource type="Script" path="res://resources/abilities/ability.gd" id="2_m0rmu"]
-
-[sub_resource type="PackedScene" id="PackedScene_kfjq1"]
-_bundled = {
-"conn_count": 0,
-"conns": PackedInt32Array(),
-"editable_instances": [],
-"names": PackedStringArray("AxeAbilityController", "Node", "script", "axe_ability_scene", "Timer", "Timer", "wait_time", "autostart"),
-"node_count": 2,
-"node_paths": [NodePath(".")],
-"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 2, 2, 0, 3, 1, 0, 1073741824, 0, 5, 4, -1, 2, 6, 2, 7, 3, 0),
-"variants": [ExtResource("1_k4f05"), ExtResource("2_kge8i"), 3.5, true],
-"version": 3
-}
 
 [resource]
 script = ExtResource("2_m0rmu")
-ability_controller_scene = SubResource("PackedScene_kfjq1")
+ability_controller_scene = ExtResource("1_r246h")
 id = "sword"
 max_level = 1
 value = 0.0
