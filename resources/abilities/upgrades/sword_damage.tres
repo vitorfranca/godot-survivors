@@ -4,9 +4,9 @@
 
 [resource]
 script = ExtResource("1_2eyyk")
-icon_path = "res://scenes/ability/sword_ability/sword.png"
 id = "sword_damage"
 max_level = 9
-name = "Sword Damage"
 value = 20.0
+icon_path = "res://scenes/ability/sword_ability/sword.png"
+name = "Sword Damage"
 description = "Increases Sword attack damage by 20%."

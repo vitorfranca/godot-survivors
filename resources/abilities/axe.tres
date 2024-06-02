@@ -20,9 +20,9 @@ _bundled = {
 [resource]
 script = ExtResource("2_ei45v")
 ability_controller_scene = SubResource("PackedScene_kfjq1")
-icon_path = "res://scenes/ability/axe_ability/axe.png"
 id = "axe"
 max_level = 1
-name = "Axe"
 value = 0.0
+icon_path = "res://scenes/ability/axe_ability/axe.png"
+name = "Axe"
 description = "Throws out a spinning axe."

@@ -19,10 +19,18 @@ theme_override_constants/margin_bottom = 8
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="NameLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="NameLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Sword Quickness"
+
+[node name="AbilityIcon" type="Sprite2D" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+centered = false
+offset = Vector2(104, -1)
 
 [node name="DescriptionLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
