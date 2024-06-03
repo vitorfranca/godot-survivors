@@ -29,6 +29,7 @@ func collect_vial():
 func disable_collision():
 	collision_shape_2d.disabled = true
 
+
 func on_area_entered(_area: Area2D):
 	Callable(disable_collision).call_deferred()
 	
@@ -46,4 +47,5 @@ func on_area_entered(_area: Area2D):
 	# Wait for all the previous tweens are finished before running the next one
 	tween.chain()
 	tween.tween_callback(collect_vial)
-	
+	$RandomStreamPlayer2DComponent.play_random()
+

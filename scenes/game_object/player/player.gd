@@ -85,6 +85,7 @@ func on_damage_interval_timer_timeout():
 
 func on_health_updated(amount: float):
 	if amount < 0:
+		$HitStreamPlayer.play_random()
 		GameEvents.emit_player_damaged()
 	update_health_display()
 	

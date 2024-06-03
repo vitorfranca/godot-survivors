@@ -1,9 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://bf3687c7cxd4p"]
+[gd_scene load_steps=17 format=3 uid="uid://bf3687c7cxd4p"]
 
 [ext_resource type="Texture2D" uid="uid://bal7541bdat1u" path="res://scenes/game_object/player/player.png" id="1_8gj82"]
 [ext_resource type="Script" path="res://scenes/game_object/player/player.gd" id="1_y6i7a"]
 [ext_resource type="PackedScene" uid="uid://8yyybjo61tko" path="res://scenes/component/health_component/health_component.tscn" id="2_bk63r"]
 [ext_resource type="PackedScene" uid="uid://drf26ya2bc016" path="res://scenes/component/velocity_component/velocity_component.tscn" id="3_pg66a"]
+[ext_resource type="PackedScene" uid="uid://eqepkkue3u42" path="res://scenes/component/random_stream_player_2d_component/random_stream_player_2d_component.tscn" id="4_xvotr"]
+[ext_resource type="AudioStream" uid="uid://lqgn0udtn28r" path="res://assets/audio/impactMining_000.ogg" id="5_gns71"]
+[ext_resource type="AudioStream" uid="uid://d4g25dmc2ouiv" path="res://assets/audio/impactMining_001.ogg" id="6_f515b"]
+[ext_resource type="AudioStream" uid="uid://der37sychj2as" path="res://assets/audio/impactMining_002.ogg" id="7_bn7eq"]
+[ext_resource type="AudioStream" uid="uid://w55nafnykgs0" path="res://assets/audio/impactMining_003.ogg" id="8_renao"]
+[ext_resource type="AudioStream" uid="uid://bqa3bv2f1ffn" path="res://assets/audio/impactMining_004.ogg" id="9_0dfn5"]
 
 [sub_resource type="Animation" id="Animation_v8nfe"]
 length = 0.001
@@ -115,6 +121,9 @@ libraries = {
 [node name="VelocityComponent" parent="." instance=ExtResource("3_pg66a")]
 max_speed = 90
 acceleration = 25.0
+
+[node name="HitStreamPlayer" parent="." instance=ExtResource("4_xvotr")]
+streams = Array[AudioStream]([ExtResource("5_gns71"), ExtResource("6_f515b"), ExtResource("7_bn7eq"), ExtResource("8_renao"), ExtResource("9_0dfn5")])
 
 [node name="Abilities" type="Node" parent="."]
 
