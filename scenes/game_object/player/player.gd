@@ -83,7 +83,9 @@ func on_damage_interval_timer_timeout():
 	check_deal_damage()
 
 
-func on_health_updated():
+func on_health_updated(amount: float):
+	if amount < 0:
+		GameEvents.emit_player_damaged()
 	update_health_display()
 	
 
