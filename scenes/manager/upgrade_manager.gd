@@ -15,6 +15,7 @@ var upgrade_sword = preload("res://resources/abilities/sword.tres")
 var upgrade_sword_rate = preload("res://resources/abilities/upgrades/sword_rate.tres")
 var upgrade_sword_damage = preload("res://resources/abilities/upgrades/sword_damage.tres")
 
+#var upgrade_player_speed = preload("res://resources/abilities/upgrades/player_speed.tres")
 
 # TODO: Add required_upgrade to ability_upgrade resource
 # TODO: Append upgrade to upgrade_pool if its required_upgrade is included
@@ -24,6 +25,7 @@ func _ready():
 	#_load_upgrades()
 	upgrade_pool.add_item(upgrade_axe, 10)
 	upgrade_pool.add_item(upgrade_sword, 10)
+	#upgrade_pool.add_item(upgrade_player_speed, 3)
 	
 	experience_manager.level_up.connect(on_level_up)
 

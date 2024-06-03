@@ -3,17 +3,19 @@ extends CharacterBody2D
 
 @onready var damage_interval_timer = $DamageIntervalTimer
 @onready var health_component: HealthComponent = $HealthComponent
+@onready var velocity_component: VelocityComponent = $VelocityComponent
 @onready var health_bar = $HealthBar
 @onready var abilities = $Abilities
 @onready var animation_player = $AnimationPlayer
 @onready var visuals = $Visuals
 
 @export var experience_manager: ExperienceManager
-@export var speed = 125
-@export var acceleration_smoothing = 25
+
+var upgrade_player_speed = preload("res://resources/abilities/upgrades/player_speed.tres")
 
 var number_colliding_bodies = 0
 var move_sign = 0
+
 
 func _ready():
 	$CollisionArea2D.body_entered.connect(on_body_entered)
@@ -25,13 +27,11 @@ func _ready():
 	update_health_display()
 
 
-func _process(delta):
+func _process(_delta):
 	var movement_vector = get_movement_vector()
 	var direction = movement_vector.normalized()
-	var target_velocity = direction * speed
-	
-	velocity = velocity.lerp(target_velocity, 1 - exp(-delta * acceleration_smoothing))
-	move_and_slide()
+	velocity_component.accelerate_in_direction(direction)
+	velocity_component.move(self)
 	
 	if movement_vector.x != 0 || movement_vector.y != 0:
 		animation_player.play("walk")
@@ -88,11 +88,14 @@ func on_health_updated():
 	
 
 func on_ability_upgrade_added(ability_upgrade: AbilityUpgrade, _current_upgrades: Dictionary):
-	if not ability_upgrade is Ability:
-		return
-	var ability = ability_upgrade as Ability
-	abilities.add_child(ability.ability_controller_scene.instantiate())
-	
+	if ability_upgrade is Ability:
+		var ability = ability_upgrade as Ability
+		abilities.add_child(ability.ability_controller_scene.instantiate())
+	else:
+		match ability_upgrade.id:
+			upgrade_player_speed.id:
+				velocity_component.increase_max_speed(upgrade_player_speed.value)
+
 
 func on_level_up(_new_level: int):
 	increase_player_health()

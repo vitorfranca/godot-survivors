@@ -7,6 +7,14 @@ class_name VelocityComponent
 var velocity: Vector2 = Vector2.ZERO
 
 
+func increase_max_speed(increase: int):
+	max_speed += increase
+
+
+func increase_acceleration(increase: float):
+	acceleration += increase
+
+
 func accelerate_to_player():
 	var player = get_tree().get_first_node_in_group("player") as Player
 	if player == null:
