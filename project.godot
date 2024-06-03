@@ -14,9 +14,12 @@ config/name="2DSurvivors"
 config/version="0.6"
 run/main_scene="res://scenes/main/main.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
-run/max_fps=165
 config/icon="res://knight_icon.svg"
 config/windows_native_icon="res://knight_icon.ico"
+
+[audio]
+
+buses/default_bus_layout=""
 
 [autoload]
 

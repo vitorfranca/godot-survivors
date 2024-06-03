@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ddqdf7bbpp5sr"]
+[gd_scene load_steps=17 format=3 uid="uid://ddqdf7bbpp5sr"]
 
 [ext_resource type="Texture2D" uid="uid://b31jcsij7xcqi" path="res://scenes/game_object/enemy/wizard_enemy/wizard_enemy.png" id="1_4qisc"]
 [ext_resource type="Script" path="res://scenes/game_object/enemy/wizard_enemy/wizard_enemy.gd" id="1_thy6p"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c1jjjr1p5ufff" path="res://scenes/component/hit_flash_component/hit_flash_component.tscn" id="5_3yv33"]
 [ext_resource type="Shader" path="res://scenes/component/hit_flash_component/hit_flash_component.gdshader" id="6_cw24s"]
 [ext_resource type="PackedScene" uid="uid://o0bw3qo1cxb3" path="res://scenes/component/death_component/death_component.tscn" id="7_gypi2"]
+[ext_resource type="PackedScene" uid="uid://eqepkkue3u42" path="res://scenes/component/random_stream_player_2d_component/random_stream_player_2d_component.tscn" id="8_2ktux"]
 [ext_resource type="PackedScene" uid="uid://b0o52qx2odbi5" path="res://scenes/component/hurtbox_component/hurtbox_component.tscn" id="8_p66ig"]
 
 [sub_resource type="Animation" id="Animation_kirou"]
@@ -155,6 +156,8 @@ sprite = NodePath("../Visuals/Sprite2D")
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("7_gypi2")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/Sprite2D")
+
+[node name="RandomStreamPlayer2DComponent" parent="." instance=ExtResource("8_2ktux")]
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("8_p66ig")]
 visible = false

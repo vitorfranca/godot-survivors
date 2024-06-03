@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://cp6bpg6fld8b0"]
+[gd_scene load_steps=17 format=3 uid="uid://cp6bpg6fld8b0"]
 
 [ext_resource type="Script" path="res://scenes/game_object/enemy/basic_enemy/basic_enemy.gd" id="1_i32oj"]
 [ext_resource type="PackedScene" uid="uid://8yyybjo61tko" path="res://scenes/component/health_component/health_component.tscn" id="2_8nioh"]
+[ext_resource type="PackedScene" uid="uid://eqepkkue3u42" path="res://scenes/component/random_stream_player_2d_component/random_stream_player_2d_component.tscn" id="2_dcybi"]
 [ext_resource type="PackedScene" uid="uid://drf26ya2bc016" path="res://scenes/component/velocity_component/velocity_component.tscn" id="3_bc3q3"]
 [ext_resource type="PackedScene" uid="uid://dt1p5hucw0viu" path="res://scenes/component/vial_drop_component/vial_drop_component.tscn" id="4_lr42a"]
 [ext_resource type="PackedScene" uid="uid://c1jjjr1p5ufff" path="res://scenes/component/hit_flash_component/hit_flash_component.tscn" id="5_sqvrs"]
@@ -163,6 +164,8 @@ sprite = NodePath("../Visuals/Sprite2D")
 visible = false
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/Sprite2D")
+
+[node name="RandomStreamPlayer2DComponent" parent="." instance=ExtResource("2_dcybi")]
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("7_11m4j")]
 visible = false

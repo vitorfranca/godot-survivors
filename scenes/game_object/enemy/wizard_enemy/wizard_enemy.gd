@@ -14,3 +14,4 @@ func move():
 	else:
 		velocity_component.decelerate()
 	velocity_component.move(self)
+

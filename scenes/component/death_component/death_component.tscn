@@ -1,7 +1,23 @@
-[gd_scene load_steps=11 format=3 uid="uid://o0bw3qo1cxb3"]
+[gd_scene load_steps=12 format=3 uid="uid://o0bw3qo1cxb3"]
 
 [ext_resource type="Script" path="res://scenes/component/death_component/death_component.gd" id="1_ilrv4"]
 [ext_resource type="Texture2D" uid="uid://bf5o8brr48ty1" path="res://scenes/game_object/enemy/basic_enemy/basic_enemy.png" id="2_3t1jp"]
+[ext_resource type="PackedScene" uid="uid://eqepkkue3u42" path="res://scenes/component/random_stream_player_2d_component/random_stream_player_2d_component.tscn" id="3_3rlhl"]
+
+[sub_resource type="Animation" id="Animation_ngsyv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GPUParticles2D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_nlrrd"]
 resource_name = "default"
@@ -30,21 +46,6 @@ tracks/1/keys = {
 "args": [],
 "method": &"queue_free"
 }]
-}
-
-[sub_resource type="Animation" id="Animation_ngsyv"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("GPUParticles2D:emitting")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vvhiv"]
@@ -96,3 +97,5 @@ lifetime = 0.5
 one_shot = true
 fixed_fps = 0
 interpolate = false
+
+[node name="RandomStreamPlayer2DComponent" parent="." instance=ExtResource("3_3rlhl")]
