@@ -22,11 +22,13 @@ func _ready():
 func set_victory():
 	%TitleLabel.text = "Victory"
 	%DescriptionLabel.text = "You won!"
+	$VictoryStreamPlayer.play()
 	
 	
 func set_defeat():
 	%TitleLabel.text = "Defeat"
 	%DescriptionLabel.text = "You lost!"
+	$DefeatStreamPlayer.play()
 	
 
 func on_restart_button_pressed():

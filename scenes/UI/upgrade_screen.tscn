@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://c1h603ncguibc"]
+[gd_scene load_steps=8 format=3 uid="uid://c1h603ncguibc"]
 
 [ext_resource type="Script" path="res://scenes/ui/upgrade_screen.gd" id="1_khaq2"]
 [ext_resource type="PackedScene" uid="uid://cjvn4rudiqqei" path="res://scenes/ui/ability_upgrade_card.tscn" id="1_ld2kg"]
+[ext_resource type="AudioStream" uid="uid://dfq7xc63myn75" path="res://assets/audio/NES going up.ogg" id="3_arnn2"]
 
 [sub_resource type="Animation" id="Animation_i7hlx"]
 length = 0.001
@@ -63,6 +64,12 @@ _data = {
 process_mode = 3
 script = ExtResource("1_khaq2")
 upgrade_card_scene = ExtResource("1_ld2kg")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_arnn2")
+volume_db = -5.0
+autoplay = true
+bus = &"sfx"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

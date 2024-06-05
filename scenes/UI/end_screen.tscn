@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://d3q5mx68v2c8p"]
+[gd_scene load_steps=9 format=3 uid="uid://d3q5mx68v2c8p"]
 
 [ext_resource type="Script" path="res://scenes/ui/end_screen.gd" id="1_3uuei"]
 [ext_resource type="PackedScene" uid="uid://cv2u42bacuout" path="res://scenes/component/button_click_player_component/button_click_player_component.tscn" id="2_5enuj"]
+[ext_resource type="AudioStream" uid="uid://hqo85vg3qbgi" path="res://assets/audio/NES victory.ogg" id="2_tvdv4"]
+[ext_resource type="AudioStream" uid="uid://dv4au4u11k00l" path="res://assets/audio/NES death.ogg" id="3_c5xqa"]
 
 [sub_resource type="Animation" id="Animation_i7hlx"]
 length = 0.001
@@ -62,6 +64,16 @@ _data = {
 [node name="EndScreen" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_3uuei")
+
+[node name="VictoryStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_tvdv4")
+volume_db = -4.0
+bus = &"sfx"
+
+[node name="DefeatStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_c5xqa")
+volume_db = -4.0
+bus = &"sfx"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

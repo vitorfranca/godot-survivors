@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dfq7xc63myn75"
+path="res://.godot/imported/NES going up.ogg-b860f2ccb384a2ba6c9596edf1b2450f.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/NES going up.ogg"
+dest_files=["res://.godot/imported/NES going up.ogg-b860f2ccb384a2ba6c9596edf1b2450f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

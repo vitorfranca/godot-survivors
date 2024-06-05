@@ -25,7 +25,7 @@ func _ready():
 	experience_manager.level_up.connect(on_level_up)
 	GameEvents.ability_upgrade_added.connect(on_ability_upgrade_added)
 	update_health_display()
-
+	
 
 func _process(_delta):
 	var movement_vector = get_movement_vector()
@@ -67,7 +67,7 @@ func increase_player_health():
 	health_component.update_max_health_percentage(1.1)
 	var health_increase = health_component.max_health - prev_max_health
 	health_component.heal(health_increase)
-	
+
 
 # Signal callbacks
 func on_body_entered(_body: Node2D):

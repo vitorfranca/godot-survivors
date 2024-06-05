@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bf3687c7cxd4p"]
+[gd_scene load_steps=19 format=3 uid="uid://bf3687c7cxd4p"]
 
 [ext_resource type="Texture2D" uid="uid://bal7541bdat1u" path="res://scenes/game_object/player/player.png" id="1_8gj82"]
 [ext_resource type="Script" path="res://scenes/game_object/player/player.gd" id="1_y6i7a"]
@@ -9,7 +9,9 @@
 [ext_resource type="AudioStream" uid="uid://d4g25dmc2ouiv" path="res://assets/audio/impactMining_001.ogg" id="6_f515b"]
 [ext_resource type="AudioStream" uid="uid://der37sychj2as" path="res://assets/audio/impactMining_002.ogg" id="7_bn7eq"]
 [ext_resource type="AudioStream" uid="uid://w55nafnykgs0" path="res://assets/audio/impactMining_003.ogg" id="8_renao"]
+[ext_resource type="AudioStream" uid="uid://ctuo4jnak46b1" path="res://assets/audio/footstep_concrete_001.ogg" id="8_upnil"]
 [ext_resource type="AudioStream" uid="uid://bqa3bv2f1ffn" path="res://assets/audio/impactMining_004.ogg" id="9_0dfn5"]
+[ext_resource type="AudioStream" uid="uid://bn3fmj5xwvyw8" path="res://assets/audio/footstep_concrete_002.ogg" id="9_3in17"]
 
 [sub_resource type="Animation" id="Animation_v8nfe"]
 length = 0.001
@@ -90,6 +92,20 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector2(1, 1), Vector2(0.9, 1.1), Vector2(1.1, 0.9), Vector2(1, 1)]
 }
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FootstepPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_random"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ohct1"]
 _data = {
@@ -111,6 +127,15 @@ collision_layer = 0
 motion_mode = 1
 script = ExtResource("1_y6i7a")
 
+[node name="HitStreamPlayer" parent="." instance=ExtResource("4_xvotr")]
+streams = Array[AudioStream]([ExtResource("5_gns71"), ExtResource("6_f515b"), ExtResource("7_bn7eq"), ExtResource("8_renao"), ExtResource("9_0dfn5")])
+
+[node name="FootstepPlayer" parent="." instance=ExtResource("4_xvotr")]
+volume_db = -12.0
+streams = Array[AudioStream]([ExtResource("8_upnil"), ExtResource("9_3in17")])
+min_pitch = 0.5
+max_pitch = 1.5
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_ohct1")
@@ -121,9 +146,6 @@ libraries = {
 [node name="VelocityComponent" parent="." instance=ExtResource("3_pg66a")]
 max_speed = 90
 acceleration = 25.0
-
-[node name="HitStreamPlayer" parent="." instance=ExtResource("4_xvotr")]
-streams = Array[AudioStream]([ExtResource("5_gns71"), ExtResource("6_f515b"), ExtResource("7_bn7eq"), ExtResource("8_renao"), ExtResource("9_0dfn5")])
 
 [node name="Abilities" type="Node" parent="."]
 
