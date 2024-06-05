@@ -98,3 +98,4 @@ func on_level_up(_level: int):
 
 func on_upgrade_selected(upgrade: AbilityUpgrade):
 	apply_upgrade(upgrade)
+

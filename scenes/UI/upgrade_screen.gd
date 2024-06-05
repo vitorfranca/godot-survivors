@@ -27,3 +27,4 @@ func on_upgrade_selected(upgrade: AbilityUpgrade):
 	await $AnimationPlayer.animation_finished
 	get_tree().paused = false
 	queue_free()
+
