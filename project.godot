@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="2DSurvivors"
-config/version="0.8.1"
+config/version="0.8.2"
 run/main_scene="res://scenes/ui/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://knight_icon.svg"
@@ -19,7 +19,7 @@ config/windows_native_icon="res://knight_icon.ico"
 
 [audio]
 
-buses/default_bus_layout=""
+buses/default_bus_layout="res://resources/default_bus_layout.tres"
 
 [autoload]
 
