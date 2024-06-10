@@ -19,7 +19,7 @@ config/windows_native_icon="res://knight_icon.ico"
 
 [audio]
 
-buses/default_bus_layout=""
+buses/default_bus_layout="res://resources/default_bus_layout.tres"
 
 [autoload]
 
