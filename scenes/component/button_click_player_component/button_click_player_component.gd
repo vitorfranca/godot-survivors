@@ -13,11 +13,9 @@ func _ready():
 
 
 func on_button_down():
-	print("on_button_down")
 	button_down_player.play()
 	
 	
 func on_button_up():
-	print("on_button_up")
 	button_up_player.play()
 
