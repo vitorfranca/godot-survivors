@@ -6,6 +6,7 @@ class_name EndScreenManager
 
 @export var end_screen_scene: PackedScene
 
+
 func _ready():
 	await player.ready
 	player.health_component.died.connect(on_player_died)
@@ -25,8 +26,11 @@ func show_victory_screen():
 
 
 func on_player_died():
+	GameEvents.emit_defeat()
 	show_defeat_screen()
 
 
 func on_arena_timer_timeout():
+	GameEvents.emit_victory()
 	show_victory_screen()
+

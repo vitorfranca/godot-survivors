@@ -11,8 +11,10 @@ config_version=5
 [application]
 
 config/name="2DSurvivors"
-config/version="0.8.2"
+config/version="0.9"
 run/main_scene="res://scenes/ui/main_menu.tscn"
+config/use_custom_user_dir=true
+config/custom_user_dir_name="KnightSurvivor"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://knight_icon.svg"
 config/windows_native_icon="res://knight_icon.ico"
@@ -27,6 +29,7 @@ GameEvents="*res://scenes/autoload/game_events.tscn"
 MusicPlayer="*res://scenes/autoload/music_player.tscn"
 ScreenTransition="*res://scenes/autoload/screen_transition.tscn"
 SceneManager="*res://scenes/autoload/scene_manager.tscn"
+MetaProgression="*res://scenes/autoload/meta_progression.tscn"
 
 [display]
 
