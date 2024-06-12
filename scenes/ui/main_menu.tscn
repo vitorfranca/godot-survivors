@@ -11,6 +11,7 @@ script = ExtResource("1_3pwy5")
 
 [node name="Vignette" parent="." instance=ExtResource("2_g5inm")]
 layer = 2
+script = null
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_l273n")
