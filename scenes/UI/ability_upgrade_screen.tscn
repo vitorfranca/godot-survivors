@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://c1h603ncguibc"]
 
-[ext_resource type="Script" path="res://scenes/ui/upgrade_screen.gd" id="1_khaq2"]
-[ext_resource type="PackedScene" uid="uid://cjvn4rudiqqei" path="res://scenes/ui/ability_upgrade_card.tscn" id="1_ld2kg"]
-[ext_resource type="AudioStream" uid="uid://dfq7xc63myn75" path="res://assets/audio/NES going up.ogg" id="3_arnn2"]
+[ext_resource type="Script" path="res://scenes/ui/ability_upgrade_screen.gd" id="1_xgl0w"]
+[ext_resource type="PackedScene" uid="uid://cjvn4rudiqqei" path="res://scenes/ui/ability_upgrade_card.tscn" id="2_gqk8q"]
+[ext_resource type="AudioStream" uid="uid://dfq7xc63myn75" path="res://assets/audio/NES going up.ogg" id="3_nxpkj"]
 
 [sub_resource type="Animation" id="Animation_i7hlx"]
 length = 0.001
@@ -62,11 +62,11 @@ _data = {
 
 [node name="UpgradeScreen" type="CanvasLayer"]
 process_mode = 3
-script = ExtResource("1_khaq2")
-upgrade_card_scene = ExtResource("1_ld2kg")
+script = ExtResource("1_xgl0w")
+upgrade_card_scene = ExtResource("2_gqk8q")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_arnn2")
+stream = ExtResource("3_nxpkj")
 volume_db = -5.0
 autoplay = true
 bus = &"sfx"
@@ -86,15 +86,16 @@ grow_vertical = 2
 color = Color(0.607843, 0.298039, 0.639216, 0.352941)
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
+unique_name_in_owner = true
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -8.0
-offset_top = -8.0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = -57.0
+offset_top = -25.5
+offset_right = 57.0
+offset_bottom = 25.5
 grow_horizontal = 2
 grow_vertical = 2
 

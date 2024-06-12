@@ -13,7 +13,6 @@ func _ready():
 	if parent.has_signal("drag_started"):
 		parent.drag_started.connect(on_button_down)
 	if parent.has_signal("drag_ended"):
-		print("drag_ended")
 		parent.drag_ended.connect(on_drag_ended)
 
 
@@ -27,3 +26,4 @@ func on_button_up():
 
 func on_drag_ended(_value_changed: bool):
 	on_button_up()
+

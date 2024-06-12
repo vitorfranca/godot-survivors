@@ -10,7 +10,7 @@ func _ready():
 
 
 func on_play_pressed():
-	get_tree().change_scene_to_file("res://scenes/main/main.tscn")
+	SceneManager.load_main_scene()
 
 
 func on_options_pressed():
@@ -25,3 +25,4 @@ func on_quit_pressed():
 
 func on_options_closed(options_instance: Node):
 	options_instance.queue_free()
+

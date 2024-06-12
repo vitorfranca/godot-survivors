@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://bdtrk0csxx5l5"]
+[gd_scene load_steps=16 format=3 uid="uid://bdtrk0csxx5l5"]
 
 [ext_resource type="PackedScene" uid="uid://bf3687c7cxd4p" path="res://scenes/game_object/player/player.tscn" id="1_8pe1k"]
+[ext_resource type="Script" path="res://scenes/main/main.gd" id="1_ggu4s"]
 [ext_resource type="TileSet" uid="uid://bvarhutcwdciw" path="res://resources/tileset.tres" id="1_hoauw"]
 [ext_resource type="PackedScene" uid="uid://b68natiq3gs6m" path="res://scenes/manager/enemy_manager.tscn" id="1_ld0bw"]
 [ext_resource type="PackedScene" uid="uid://c7dy8xie5xbc0" path="res://scenes/ui/vignette.tscn" id="1_lgyvt"]
@@ -16,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://cp6bpg6fld8b0" path="res://scenes/game_object/enemy/basic_enemy/basic_enemy.tscn" id="12_1mt01"]
 
 [node name="Main" type="Node"]
+script = ExtResource("1_ggu4s")
 
 [node name="Vignette" parent="." instance=ExtResource("1_lgyvt")]
 
