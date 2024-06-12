@@ -31,9 +31,9 @@ SceneManager="*res://scenes/autoload/scene_manager.tscn"
 [display]
 
 window/size/viewport_width=768
-window/size/viewport_height=480
+window/size/viewport_height=432
 window/size/window_width_override=1280
-window/size/window_height_override=800
+window/size/window_height_override=720
 window/stretch/mode="viewport"
 mouse_cursor/custom_image="res://assets/cursor.png"
 window/snap/snap_2d_transforms_to_pixel=true
