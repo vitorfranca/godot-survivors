@@ -5,8 +5,8 @@
 [resource]
 script = ExtResource("1_of42u")
 id = "experience_gain"
-max_level = 1
-value = 0.0
+max_level = 10
+value = 1.0
 experience_cost = 100
 icon_path = "res://scenes/game_object/experience_vial/experience_vial.png"
 name = "Experience Gain"

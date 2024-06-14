@@ -135,14 +135,14 @@ layout_mode = 2
 [node name="RestartButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Restart"
+text = "Continue"
 
 [node name="ButtonClickPlayerComponent" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/RestartButton" instance=ExtResource("2_5enuj")]
 
 [node name="QuitButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Quit
+text = "Quit to Menu
 "
 
 [node name="ButtonClickPlayerComponent" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/QuitButton" instance=ExtResource("2_5enuj")]

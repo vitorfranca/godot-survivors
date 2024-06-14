@@ -66,6 +66,13 @@ text = "Play
 
 [node name="ButtonClickPlayerComponent" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/PlayButton" instance=ExtResource("2_8x7kl")]
 
+[node name="UpgradesButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Upgrades"
+
+[node name="ButtonClickPlayerComponent" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/UpgradesButton" instance=ExtResource("2_8x7kl")]
+
 [node name="OptionsButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2

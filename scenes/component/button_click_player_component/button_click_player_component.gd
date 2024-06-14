@@ -8,8 +8,8 @@ func _ready():
 	var parent: Node = get_parent()
 	if parent.has_signal("button_down"):
 		parent.button_down.connect(on_button_down)
-	if parent.has_signal("button_up"):
-		parent.button_up.connect(on_button_up)
+	#if parent.has_signal("button_up"):
+		#parent.button_up.connect(on_button_up)
 	if parent.has_signal("drag_started"):
 		parent.drag_started.connect(on_button_down)
 	if parent.has_signal("drag_ended"):

@@ -1,8 +1,10 @@
 extends Node
 
-@export_range(0, 1) var drop_percent: float = .5
+@export_range(0, 1, 0.05) var drop_percent: float = .5
 @export var health_component: HealthComponent
 @export var vial_scene: PackedScene
+
+const experience_gain = preload("res://resources/meta_upgrades/experience_gain.tres")
 
 
 func _ready():
@@ -11,7 +13,12 @@ func _ready():
 
 
 func on_died():
-	if randf() > drop_percent:
+	var adjusted_drop_percent = drop_percent
+	var experience_gain_upgrade_quantity = MetaProgression.get_upgrade_quantity(experience_gain.id)
+	if experience_gain_upgrade_quantity > 0:
+		adjusted_drop_percent = adjusted_drop_percent * (1 + experience_gain.value)
+	
+	if randf() > adjusted_drop_percent:
 		return
 	if vial_scene == null:
 		return
