@@ -32,7 +32,7 @@ func update_progress():
 	percent = min(percent, 1)
 	progress_bar.value = percent
 	progress_label.text = "%s/%s" % [current_currency, upgrade.get_cost()]
-	#purchase_button.disabled = percent < 1 || is_maxed
+	purchase_button.disabled = percent < 1 || is_maxed
 	count_label.text = "x%d" % current_quantity
 	
 	if is_maxed:
