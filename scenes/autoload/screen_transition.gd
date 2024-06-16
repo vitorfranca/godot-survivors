@@ -11,7 +11,7 @@ func transition():
 	await animation_player.animation_finished
 
 
-func transition_to_scene(path: String, unpause: bool = true):
+func transition_to_scene(path: String, _unpause: bool = true):
 	# TODO Make transitions work
 	#transition()
 	#await transition_half

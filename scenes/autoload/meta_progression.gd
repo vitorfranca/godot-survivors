@@ -20,7 +20,6 @@ func _ready():
 	GameEvents.victory.connect(on_victory)
 	GameEvents.defeat.connect(on_defeat)
 	load_save_file()
-	print(save_data)
 
 
 func get_currency():

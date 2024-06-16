@@ -12,7 +12,7 @@ var target_experience = 0
 
 func _ready():
 	GameEvents.experience_collected.connect(on_experience_collected)
-	Callable(_level_up).call_deferred()
+	#Callable(_level_up).call_deferred()
 
 
 func _level_up():

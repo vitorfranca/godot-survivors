@@ -129,7 +129,7 @@ shader_parameter/lerp_percent = 0.0
 radius = 9.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kvvsq"]
-radius = 4.0
+radius = 5.0
 
 [node name="WizardEnemy" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 8
@@ -143,7 +143,7 @@ libraries = {
 autoplay = "walk"
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_hmeop")]
-max_health = 25.0
+max_health = 20.0
 
 [node name="VelocityComponent" parent="." instance=ExtResource("3_ehmh7")]
 max_speed = 65
@@ -166,7 +166,6 @@ sprite = NodePath("../Visuals/Sprite2D")
 streams = Array[AudioStream]([ExtResource("9_srnk6"), ExtResource("10_fkyg7"), ExtResource("11_njiy3"), ExtResource("12_q2u2q"), ExtResource("13_m5j80")])
 
 [node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("8_p66ig")]
-visible = false
 position = Vector2(0, -8)
 health_component = NodePath("../HealthComponent")
 
@@ -181,6 +180,5 @@ texture = ExtResource("1_4qisc")
 offset = Vector2(0, -8)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(0, -3)
+position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_kvvsq")

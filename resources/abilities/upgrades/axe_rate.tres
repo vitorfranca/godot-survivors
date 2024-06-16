@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_26nyo")
 id = "axe_rate"
-max_level = 9
+max_level = 10
 value = 10.0
 icon_path = "res://scenes/ability/axe_ability/axe.png"
 name = "Axe Quickness"

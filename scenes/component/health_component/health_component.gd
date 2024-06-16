@@ -28,8 +28,10 @@ func heal_percentage(percentage: float):
 
 
 func update_max_health_percentage(percentage: float):
-	max_health = max(0, max_health * percentage)
-	_emit_health_updated(max_health * percentage)
+	var multiplicator = 1 + percentage
+	var value = max_health * multiplicator
+	max_health = max(0, max_health * value)
+	_emit_health_updated(max_health * value)
 	
 
 func update_max_health(amount: float):

@@ -1,5 +1,4 @@
-class_name SwordAbilityController
-extends AbilityController
+class_name SwordAbilityController extends AbilityController
 
 @onready var sword_rate_upgrade = preload("res://resources/abilities/upgrades/sword_rate.tres")
 @onready var sword_damage_upgrade = preload("res://resources/abilities/upgrades/sword_damage.tres")
@@ -16,13 +15,15 @@ var r_hand: Marker2D
 @export_range(0.5, 20, 0.5) var base_wait_time: float = 3
 
 ## Max enemy distance to attack.
-@export var max_range: float = 150
+@export var max_range: float = 120
 
 enum AttackType {SpawnAtPlayer, SpawnAtEnemy}
 ## Sword spawns at player hand or at the enemy
 @export var attack_type: AttackType = AttackType.SpawnAtEnemy
 
+## Current Ability damage
 var current_damage = base_damage
+
 var instances = []
 var player: Player
 

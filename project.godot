@@ -11,11 +11,15 @@ config_version=5
 [application]
 
 config/name="2DSurvivors"
-config/version="0.10"
+config/version="0.11"
 run/main_scene="res://scenes/ui/main_menu.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="KnightSurvivor"
 config/features=PackedStringArray("4.2", "Mobile")
+boot_splash/bg_color=Color(0.247059, 0.14902, 0.192157, 1)
+boot_splash/image="res://scenes/game_object/player/player.png"
+boot_splash/fullsize=false
+boot_splash/use_filter=false
 config/icon="res://knight_icon.svg"
 config/windows_native_icon="res://knight_icon.ico"
 
@@ -34,6 +38,7 @@ MetaProgression="*res://scenes/autoload/meta_progression.tscn"
 
 window/size/viewport_width=768
 window/size/viewport_height=432
+window/size/mode=3
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="viewport"
@@ -42,6 +47,7 @@ window/snap/snap_2d_transforms_to_pixel=true
 window/layer_3="Enemy"
 window/layer_2="Player"
 window/layer_1="Terrain"
+window/size/mode.debug=0
 
 [editor]
 

@@ -7,13 +7,15 @@ class_name UpgradeManager
 var current_upgrades = {}
 var upgrade_pool: WeightedTable = WeightedTable.new()
 
+var upgrade_sword = preload("res://resources/abilities/sword.tres")
+var upgrade_sword_rate = preload("res://resources/abilities/upgrades/sword_rate.tres")
+var upgrade_sword_damage = preload("res://resources/abilities/upgrades/sword_damage.tres")
+
 var upgrade_axe = preload("res://resources/abilities/axe.tres")
 var upgrade_axe_damage = preload("res://resources/abilities/upgrades/axe_damage.tres")
 var upgrade_axe_rate = preload("res://resources/abilities/upgrades/axe_rate.tres")
 
-var upgrade_sword = preload("res://resources/abilities/sword.tres")
-var upgrade_sword_rate = preload("res://resources/abilities/upgrades/sword_rate.tres")
-var upgrade_sword_damage = preload("res://resources/abilities/upgrades/sword_damage.tres")
+var upgrade_anvil = preload("res://resources/abilities/anvil.tres")
 
 var upgrade_player_speed = preload("res://resources/abilities/upgrades/player_speed.tres")
 
@@ -24,8 +26,13 @@ var upgrade_player_speed = preload("res://resources/abilities/upgrades/player_sp
 func _ready():
 	#_load_upgrades()
 	#upgrade_pool.add_item(upgrade_player_speed, 3)
-	upgrade_pool.add_item(upgrade_axe, 10)
-	upgrade_pool.add_item(upgrade_sword, 10)
+	
+	#upgrade_pool.add_item(upgrade_sword, 5)
+	upgrade_pool.add_item(upgrade_sword_rate, 10)
+	upgrade_pool.add_item(upgrade_sword_damage, 10)
+	
+	upgrade_pool.add_item(upgrade_axe, 5)
+	upgrade_pool.add_item(upgrade_anvil, 3)
 	
 	experience_manager.level_up.connect(on_level_up)
 

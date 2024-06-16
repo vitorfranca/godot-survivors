@@ -3,13 +3,14 @@ class_name EnemyManager
 
 const SPAWN_RADIUS = 300
 
+@export var arena_time_manager: ArenaTimeManager
 @export var base_spawn_time: float = 1
 @export var spawn_time_decrease_step: float = 0.1
 @export var min_spawn_time: float = 0.3
 @export var basic_enemy_scene: PackedScene
 @export var rat_enemy_scene: PackedScene
 @export var wizard_enemy_scene: PackedScene
-@export var arena_time_manager: ArenaTimeManager
+@export var bat_enemy_scene: PackedScene
 
 @onready var timer = $Timer
 var enemy_table = WeightedTable.new()
@@ -35,8 +36,9 @@ func get_spawn_position() -> Vector2:
 	
 	for i in 4:
 		spawn_position = player.global_position + (random_direction * SPAWN_RADIUS)
+		var additional_check_offset = random_direction * 20
 		
-		var query_parameters = PhysicsRayQueryParameters2D.create(player.global_position, spawn_position, 1 << 0)
+		var query_parameters = PhysicsRayQueryParameters2D.create(player.global_position, spawn_position + additional_check_offset, 1 << 0)
 		var result = get_tree().root.world_2d.direct_space_state.intersect_ray(query_parameters)
 	
 		if result.is_empty():
@@ -69,8 +71,9 @@ func on_arena_difficulty_increased(arena_difficulty: int):
 	timer.wait_time = max(timer.wait_time - time_off, min_spawn_time)
 	
 	if arena_difficulty == 12: # 1 minute
-		enemy_table.add_item(rat_enemy_scene, 20)
+		enemy_table.add_item(rat_enemy_scene, 10)
 	if arena_difficulty == 24: # 2 minutes
-		enemy_table.add_item(wizard_enemy_scene, 50)
-		
+		enemy_table.add_item(wizard_enemy_scene, 30)
+	if arena_difficulty == 28: # 2:30 minutes
+		enemy_table.add_item(bat_enemy_scene, 15)
 	

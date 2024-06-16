@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://bydqwyn4fds3h"]
+
+[ext_resource type="PackedScene" uid="uid://cjvn4rudiqqei" path="res://scenes/ui/ability_upgrade_card.tscn" id="1_7d8em"]
+[ext_resource type="PackedScene" uid="uid://bv8q5j8bqi7vd" path="res://scenes/ui/meta_upgrade_card.tscn" id="2_0nwvk"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 4.0
+offset_top = 8.0
+offset_right = 81.0
+offset_bottom = 23.0
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+columns = 4
+
+[node name="AbilityUpgradeCard" parent="GridContainer" instance=ExtResource("1_7d8em")]
+layout_mode = 2
+
+[node name="MetaUpgradeCard" parent="GridContainer" instance=ExtResource("2_0nwvk")]
+layout_mode = 2

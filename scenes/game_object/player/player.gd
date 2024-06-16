@@ -64,7 +64,7 @@ func update_health_display():
 
 func increase_player_health():
 	var prev_max_health = health_component.max_health
-	health_component.update_max_health_percentage(1.1)
+	health_component.update_max_health_percentage(.05)
 	var health_increase = health_component.max_health - prev_max_health
 	health_component.heal(health_increase)
 

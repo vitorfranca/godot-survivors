@@ -48,6 +48,7 @@ func on_window_button_pressed():
 	var mode = DisplayServer.window_get_mode()
 	match mode:
 		DisplayServer.WINDOW_MODE_FULLSCREEN:
+			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 		DisplayServer.WINDOW_MODE_WINDOWED:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
