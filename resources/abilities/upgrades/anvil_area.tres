@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://qw50miyqj6ni"]
+
+[ext_resource type="Script" path="res://resources/abilities/upgrades/ability_upgrade.gd" id="1_o3fvj"]
+
+[resource]
+script = ExtResource("1_o3fvj")
+id = "anvil_area"
+max_level = 3
+value = 1.0
+icon_path = "res://scenes/ability/anvil_ability/anvil.png"
+name = "Anvil Area"
+description = "Increases the Anvil damage area."

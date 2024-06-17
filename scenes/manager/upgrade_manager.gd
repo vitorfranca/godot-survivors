@@ -17,6 +17,7 @@ var upgrade_axe_rate = 		preload("res://resources/abilities/upgrades/axe_rate.tr
 
 var upgrade_anvil = 		preload("res://resources/abilities/anvil.tres")
 var upgrade_anvil_amount = 	preload("res://resources/abilities/upgrades/anvil_amount.tres")
+var upgrade_anvil_area = 	preload("res://resources/abilities/upgrades/anvil_area.tres")
 
 #var upgrade_player_speed = 	preload("res://resources/abilities/upgrades/player_speed.tres")
 
@@ -65,6 +66,7 @@ func update_upgrade_pool(chosen_upgrade: AbilityUpgrade):
 			upgrade_pool.add_item(upgrade_sword_rate, 10)
 		upgrade_anvil.id:
 			upgrade_pool.add_item(upgrade_anvil_amount, 10)
+			upgrade_pool.add_item(upgrade_anvil_area, 10)
 
 
 func select_upgrades() -> Array[AbilityUpgrade]:

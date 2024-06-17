@@ -22,7 +22,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HitboxComponent/CollisionShape2D:disabled")
+tracks/1/path = NodePath("HitboxComponent/DamageArea:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -75,7 +75,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HitboxComponent/CollisionShape2D:disabled")
+tracks/1/path = NodePath("HitboxComponent/DamageArea:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -177,11 +177,13 @@ autoplay = "default"
 
 [node name="HitboxComponent" parent="." instance=ExtResource("1_5l8u7")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+[node name="DamageArea" type="CollisionShape2D" parent="HitboxComponent"]
+unique_name_in_owner = true
 shape = SubResource("CircleShape2D_f4t2k")
 disabled = true
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+unique_name_in_owner = true
 material = SubResource("CanvasItemMaterial_frlnv")
 emitting = false
 amount = 32

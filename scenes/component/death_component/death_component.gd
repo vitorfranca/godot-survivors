@@ -12,14 +12,7 @@ func _ready():
 
 func on_died():
 	if owner == null || not owner is Node2D:
-		push_error("DeathComponent owner is not a Node2D.")
-		print("=====================================")
-		print("DeathComponent owner is not a Node2D.")
-		print("Self: ")
-		print(self)
-		print("Owner: ")
-		print(owner)
-		print("=====================================")
+		#push_error("DeathComponent owner is not a Node2D.")
 		return
 	
 	var spawn_position = owner.global_position
