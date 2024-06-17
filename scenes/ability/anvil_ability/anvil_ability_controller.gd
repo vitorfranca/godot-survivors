@@ -3,7 +3,7 @@ class_name AnvilAbilityController extends AbilityController
 #@onready var anvil_..._upgrade = preload("res://resources/abilities/upgrades/anvil_....tres")
 
 ## Initial damage, used for calculate damage upgrades.
-@export var base_damage: float = 25
+@export var base_damage: float
 
 ## Used to calculate damage upgrades.
 #@export_range(5, 100, 5) var aditional_damage_percent: float = 10

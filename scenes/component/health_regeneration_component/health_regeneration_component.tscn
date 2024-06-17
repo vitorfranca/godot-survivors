@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3no3ahjew5t6"]
+
+[ext_resource type="Script" path="res://scenes/component/health_regeneration_component/health_regeneration_component.gd" id="1_yj7cv"]
+
+[node name="HealthRegenerationComponent" type="Node"]
+script = ExtResource("1_yj7cv")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 15.0

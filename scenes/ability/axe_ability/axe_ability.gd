@@ -18,7 +18,7 @@ func _ready():
 	
 	base_rotation = Vector2.RIGHT.rotated(randf_range(0, TAU))
 	var tween = create_tween()
-	tween.tween_method(tween_method, 0.0, total_rotations, duration)
+	tween.tween_method(tween_method, 0.0, total_rotations * positive_or_negative(), duration)
 	tween.tween_callback(queue_free)
 
 
@@ -27,3 +27,7 @@ func tween_method(rotations: float):
 	var current_radius = percentage * max_radius
 	var current_direction = base_rotation.rotated(rotations * TAU)
 	global_position = player_initial_position + (current_direction * current_radius)
+
+
+func positive_or_negative():
+	return 1 if randf() < 0.5 else -1

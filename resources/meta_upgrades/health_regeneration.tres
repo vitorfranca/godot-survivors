@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="MetaUpgrade" load_steps=2 format=3 uid="uid://cj1cqpreawtog"]
+
+[ext_resource type="Script" path="res://resources/meta_upgrades/meta_upgrade.gd" id="1_28hsx"]
+
+[resource]
+script = ExtResource("1_28hsx")
+id = "health_regeneration"
+max_level = 4
+value = 1.0
+experience_cost = 100
+icon_path = "res://resources/meta_upgrades/health_potion.png"
+name = "Health Regen"
+description = "Regenerates health over time."

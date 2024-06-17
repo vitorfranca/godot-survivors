@@ -62,11 +62,11 @@ func update_health_display():
 	health_bar.value = health_component.get_health_percentage()
 
 
-func increase_player_health():
-	var prev_max_health = health_component.max_health
-	health_component.update_max_health_percentage(.05)
-	var health_increase = health_component.max_health - prev_max_health
-	health_component.heal(health_increase)
+#func increase_player_health():
+	#var prev_max_health = health_component.max_health
+	#health_component.update_max_health_percentage(.05)
+	#var health_increase = health_component.max_health - prev_max_health
+	#health_component.heal(health_increase)
 
 
 # Signal callbacks
@@ -101,4 +101,6 @@ func on_ability_upgrade_added(ability_upgrade: AbilityUpgrade, _current_upgrades
 
 
 func on_level_up(_new_level: int):
-	increase_player_health()
+	pass
+	#increase_player_health()
+

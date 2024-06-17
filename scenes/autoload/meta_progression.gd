@@ -58,8 +58,8 @@ func add_meta_uprade(upgrade: MetaUpgrade):
 	if !save_data["meta_upgrades"].has(upgrade.id):
 		save_data["meta_upgrades"][upgrade.id] = meta_upgrade_initial_value
 	
-	save_data["meta_upgrades"][upgrade.id]["quantity"] += 1
 	save_data["meta_upgrade_currency"] -= upgrade.get_cost()
+	save_data["meta_upgrades"][upgrade.id]["quantity"] += 1
 	save()
 
 
