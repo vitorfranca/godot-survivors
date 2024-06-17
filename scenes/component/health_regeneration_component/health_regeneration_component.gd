@@ -15,5 +15,5 @@ func _ready():
 
 
 func on_timer_timeout():
-	health_component.heal(health_regeneration_level / 2)
+	health_component.heal(health_regeneration_level / 2.0)
 

@@ -5,7 +5,6 @@
 
 [node name="AnvilAbilityController" type="Node"]
 script = ExtResource("1_3cu53")
-base_damage = 50.0
 ability_scene = ExtResource("2_6i6ew")
 
 [node name="Timer" type="Timer" parent="."]

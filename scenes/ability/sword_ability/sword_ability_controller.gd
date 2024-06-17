@@ -28,7 +28,6 @@ var instances = []
 var player: Player
 
 func _ready():
-	base_ability = load("res://resources/abilities/sword.tres")
 	ability_scene = load("res://scenes/ability/sword_ability/sword_ability.tscn")
 	$Timer.wait_time = base_wait_time
 	$Timer.timeout.connect(on_timer_timeout)

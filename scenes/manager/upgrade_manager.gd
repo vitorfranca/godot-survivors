@@ -7,20 +7,18 @@ class_name UpgradeManager
 var current_upgrades = {}
 var upgrade_pool: WeightedTable = WeightedTable.new()
 
-var upgrade_sword = preload("res://resources/abilities/sword.tres")
-var upgrade_sword_rate = preload("res://resources/abilities/upgrades/sword_rate.tres")
-var upgrade_sword_damage = preload("res://resources/abilities/upgrades/sword_damage.tres")
+var upgrade_sword = 		preload("res://resources/abilities/sword.tres")
+var upgrade_sword_rate = 	preload("res://resources/abilities/upgrades/sword_rate.tres")
+var upgrade_sword_damage = 	preload("res://resources/abilities/upgrades/sword_damage.tres")
 
-var upgrade_axe = preload("res://resources/abilities/axe.tres")
-var upgrade_axe_damage = preload("res://resources/abilities/upgrades/axe_damage.tres")
-var upgrade_axe_rate = preload("res://resources/abilities/upgrades/axe_rate.tres")
+var upgrade_axe = 			preload("res://resources/abilities/axe.tres")
+var upgrade_axe_damage = 	preload("res://resources/abilities/upgrades/axe_damage.tres")
+var upgrade_axe_rate = 		preload("res://resources/abilities/upgrades/axe_rate.tres")
 
-var upgrade_anvil = preload("res://resources/abilities/anvil.tres")
+var upgrade_anvil = 		preload("res://resources/abilities/anvil.tres")
+var upgrade_anvil_amount = 	preload("res://resources/abilities/upgrades/anvil_amount.tres")
 
-var upgrade_player_speed = preload("res://resources/abilities/upgrades/player_speed.tres")
-
-# TODO: Add required_upgrade to ability_upgrade resource
-# TODO: Append upgrade to upgrade_pool if its required_upgrade is included
+#var upgrade_player_speed = 	preload("res://resources/abilities/upgrades/player_speed.tres")
 
 
 func _ready():
@@ -32,7 +30,7 @@ func _ready():
 	upgrade_pool.add_item(upgrade_sword_damage, 10)
 	
 	upgrade_pool.add_item(upgrade_axe, 5)
-	upgrade_pool.add_item(upgrade_anvil, 3)
+	upgrade_pool.add_item(upgrade_anvil, 5)
 	
 	experience_manager.level_up.connect(on_level_up)
 
@@ -65,6 +63,8 @@ func update_upgrade_pool(chosen_upgrade: AbilityUpgrade):
 		upgrade_sword.id:
 			upgrade_pool.add_item(upgrade_sword_damage, 10)
 			upgrade_pool.add_item(upgrade_sword_rate, 10)
+		upgrade_anvil.id:
+			upgrade_pool.add_item(upgrade_anvil_amount, 10)
 
 
 func select_upgrades() -> Array[AbilityUpgrade]:

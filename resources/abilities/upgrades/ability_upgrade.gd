@@ -8,7 +8,7 @@ extends Resource
 @export var max_level: int = 0
 
 ## Used to calculate ability upgrade.[br]Should match the description.
-@export_range(0, 100, 5, "or_greater", "or_less") var value: float = 0
+@export_range(0, 100, 1, "or_greater", "or_less") var value: float = 0
 
 ## Will be displayed when the user chooses abilities.
 @export var icon_path: String

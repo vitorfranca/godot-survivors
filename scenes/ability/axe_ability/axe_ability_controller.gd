@@ -17,7 +17,6 @@ var current_damage = base_damage
 
 
 func _ready():
-	base_ability = load("res://resources/abilities/axe.tres")
 	ability_scene = load("res://scenes/ability/axe_ability/axe_ability.tscn")
 	$Timer.timeout.connect(on_timer_timeout)
 	$Timer.wait_time = base_wait_time

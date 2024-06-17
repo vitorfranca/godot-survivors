@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://bjgievhhhi7kb"]
+
+[ext_resource type="Script" path="res://resources/abilities/upgrades/ability_upgrade.gd" id="1_d2efg"]
+
+[resource]
+script = ExtResource("1_d2efg")
+id = "anvil_amount"
+max_level = 3
+value = 1.0
+icon_path = "res://scenes/ability/anvil_ability/anvil.png"
+name = "Anvil Amount"
+description = "Adds one additional Anvil."
