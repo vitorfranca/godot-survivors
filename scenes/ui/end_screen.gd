@@ -33,7 +33,7 @@ func set_defeat():
 
 func on_restart_button_pressed():
 	get_tree().paused = false
-	ScreenTransition.transition_to_scene("res://scenes/ui/meta_menu.tscn")
+	ScreenTransition.transition_to_scene("res://scenes/ui/meta_upgrade_screen.tscn")
 	
 
 func on_quit_button_pressed():

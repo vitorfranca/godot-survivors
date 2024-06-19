@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bq1f2xug1k6s4"]
 
-[ext_resource type="Script" path="res://scenes/ui/meta_menu.gd" id="1_7av37"]
+[ext_resource type="Script" path="res://scenes/ui/meta_upgrade_screen.gd" id="1_7av37"]
 [ext_resource type="Resource" uid="uid://cs2n3saarkkk0" path="res://resources/meta_upgrades/experience_gain.tres" id="2_jse6d"]
 [ext_resource type="Resource" uid="uid://cj1cqpreawtog" path="res://resources/meta_upgrades/health_regeneration.tres" id="3_o544c"]
 [ext_resource type="TileSet" uid="uid://bvarhutcwdciw" path="res://resources/tileset.tres" id="3_sdrl4"]

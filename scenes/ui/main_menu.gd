@@ -15,7 +15,7 @@ func on_play_pressed():
 
 
 func on_upgrades_pressed():
-	ScreenTransition.transition_to_scene("res://scenes/ui/meta_menu.tscn")
+	ScreenTransition.transition_to_scene("res://scenes/ui/meta_upgrade_screen.tscn")
 
 func on_options_pressed():
 	var options_instance = options_scene.instantiate()
