@@ -13,5 +13,4 @@ func emit_particles():
 func set_damage_area(increased_amount: int):
 	%DamageArea.shape.radius = base_area + increased_amount
 	%GPUParticles2D.process_material.emission_sphere_radius = base_area + increased_amount
-	print(%DamageArea.shape.radius)
 

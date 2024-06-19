@@ -14,6 +14,7 @@ const SPAWN_RADIUS = 300
 
 @onready var timer = $Timer
 var enemy_table = WeightedTable.new()
+var number_to_spawn: int = 1
 
 
 func _ready():
@@ -61,7 +62,8 @@ func spawn_enemy():
 	
 func on_timer_timeout():
 	timer.start()
-	spawn_enemy()
+	for i in number_to_spawn:
+		spawn_enemy()
 
 
 func on_arena_difficulty_increased(arena_difficulty: int):
@@ -69,6 +71,9 @@ func on_arena_difficulty_increased(arena_difficulty: int):
 	var number_of_increases = level_time / arena_time_manager.DIFFICULTY_INTERVAL
 	var time_off = (spawn_time_decrease_step / number_of_increases) * arena_difficulty
 	timer.wait_time = max(timer.wait_time - time_off, min_spawn_time)
+	
+	if arena_difficulty % 8 == 0: # every 45s spawn one more enemy
+		number_to_spawn += 1
 	
 	if arena_difficulty == 12: # 1 minute
 		enemy_table.add_item(rat_enemy_scene, 10)

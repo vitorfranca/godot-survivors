@@ -40,7 +40,7 @@ func upgrade_ability(upgrade: AbilityUpgrade, _current_upgrades: Dictionary):
 		anvil_amount_upgrade.id:
 			anvil_amount += 1
 		anvil_area_upgrade.id:
-			increased_anvil_area += 24
+			increased_anvil_area += upgrade.value
 
 
 func on_timer_timeout():

@@ -6,7 +6,7 @@
 script = ExtResource("1_o3fvj")
 id = "anvil_area"
 max_level = 3
-value = 1.0
+value = 8.0
 icon_path = "res://scenes/ability/anvil_ability/anvil.png"
 name = "Anvil Area"
 description = "Increases the Anvil damage area."

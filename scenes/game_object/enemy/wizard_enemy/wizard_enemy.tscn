@@ -150,7 +150,7 @@ max_speed = 65
 acceleration = 20.0
 
 [node name="VialDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_ts12c")]
-drop_percent = 0.8
+drop_percent = 0.6
 health_component = NodePath("../HealthComponent")
 
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_3yv33")]
